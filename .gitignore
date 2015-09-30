@@ -1,0 +1,5 @@
+*.sdf
+Assignment1/Assignment1.sln
+*.suo
+Assignment1/Assignment1.vcxproj.filters
+*.vcxproj
