@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:				Patrick Carlson
 * Date Created:			10/1/2015
-* Last Modification Date:	10/2/2015
+* Last Modification Date:	10/3/2015
 * Assignment Number:    CST 211 Assignment 1
 * Filename:				Tester.cpp, Array.h, Array.inc
 *
