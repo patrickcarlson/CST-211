@@ -13,6 +13,8 @@ void assignmenttest();
 
 void subscripttest();
 
+void exceptiontesting();
+
 void main()
 {
 	Array<int> a(10, 0);
@@ -25,6 +27,8 @@ void main()
 	assignmenttest();
 
 	subscripttest();
+
+	exceptiontesting();
 
 };
 
@@ -72,4 +76,11 @@ void subscripttest()
 		cout << a[i] << endl;
 
 	}
+}
+
+void exceptiontesting()
+{
+	Array<int> a(10, 0);
+
+	cout << a[-2];
 }

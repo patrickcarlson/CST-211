@@ -45,6 +45,22 @@ Array<T>& Array<T>::operator= (const Array &rhs)
 template <typename T>
 T& Array<T>::operator[](int index)
 {
+	try{
+		if (index < m_start_index || index >= m_start_index + m_length)
+		{
+			throw index;
+		}
+
+		
+	}
+	catch (int e)
+	{
+		Exception except("Index out of Range");
+
+		cout << e << " " << except << endl;
+	}
+	
+	
 	int trueindex = index - m_start_index;
 	return m_array[trueindex];
 }
@@ -73,6 +89,7 @@ void Array<T>::setLength(int length)
 	m_length = length;
 }
 
+/*
 Exception::Exception()
 {
 	m_msg = "Standard Error";
@@ -81,7 +98,7 @@ Exception::Exception()
 Exception::Exception(char *msg)
 	:m_msg(msg)
 {
-	
+
 }
 
 Exception::Exception(const Exception &copy)
@@ -117,3 +134,5 @@ std::ostream& operator<<(std::ostream &stream, const Exception &except)
 
 	return stream;
 }
+
+*/
