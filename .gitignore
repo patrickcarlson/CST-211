@@ -3,3 +3,14 @@ Assignment1/Assignment1.sln
 *.suo
 Assignment1/Assignment1.vcxproj.filters
 *.vcxproj
+*.opensdf
+Assignment1/Debug/Assignment1.Build.CppClean.log
+*.exe
+Assignment1/Debug/Assignment1.ilk
+*.log
+Assignment1/Debug/Assignment1.tlog/Assignment1.lastbuildstate
+*.pdb
+Assignment1/Debug/Assignment1.tlog/cl.command.1.tlog
+*.tlog
+Assignment1/Debug/Tester.obj
+*.idb
