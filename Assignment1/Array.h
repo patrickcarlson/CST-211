@@ -1,6 +1,8 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
+#include <iostream>
+
 template <typename T>
 class Array
 {
@@ -32,11 +34,12 @@ public:
 	Exception& operator =(const Exception &rhs);
 	const char* getMessage();
 	void setMessage(char *msg);
-	friend ostream& operator<<(ostream &stream, const Exception &except);
+	friend std::ostream& operator<<(std::ostream &stream, const Exception &except);
 
 private:
 	char* m_msg;
 };
+
 #include "Array.inc"
 
 #endif

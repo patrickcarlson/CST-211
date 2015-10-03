@@ -1,9 +1,11 @@
+#include <iostream>
 #include <string.h>
 
 template <typename T>
 Array<T>::Array()
 {
-
+	m_length = 10;
+	m_start_index = 0;
 }
 
 template <typename T>
@@ -69,4 +71,49 @@ template <typename T>
 void Array<T>::setLength(int length)
 {
 	m_length = length;
+}
+
+Exception::Exception()
+{
+	m_msg = "Standard Error";
+}
+
+Exception::Exception(char *msg)
+	:m_msg(msg)
+{
+	
+}
+
+Exception::Exception(const Exception &copy)
+{
+	m_msg = copy.m_msg;
+}
+
+Exception::~Exception()
+{
+
+}
+
+Exception& Exception::operator=(const Exception &rhs)
+{
+	m_msg = rhs.m_msg;
+
+	return *this;
+}
+
+const char* Exception::getMessage()
+{
+	return m_msg;
+}
+
+void Exception::setMessage(char *msg)
+{
+	m_msg = msg;
+}
+
+std::ostream& operator<<(std::ostream &stream, const Exception &except)
+{
+	stream << except.m_msg;
+
+	return stream;
 }
