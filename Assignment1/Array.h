@@ -3,7 +3,7 @@
 * Date Created:			10/1/2015
 * Last Modification Date:	10/3/2015
 * Assignment Number:    CST 211 Assignment 1
-* Filename:				Tester.cpp, Array.h, Array.inc
+* Filename:				Array.h
 *
 * Overview:
 *	These classes allow the creation of a dynamic array, titled

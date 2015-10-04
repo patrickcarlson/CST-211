@@ -3,21 +3,18 @@
 * Date Created:			10/1/2015
 * Last Modification Date:	10/3/2015
 * Assignment Number:    CST 211 Assignment 1
-* Filename:				Tester.cpp, Array.h, Array.inc
+* Filename:				Array.inc
 *
 * Overview:
-*	These classes allow the creation of a dynamic array, titled
-*	Array, which can have its index values, and lengths, adjusted
-*	by users of this class. The Array class is a template class.
+*	Array.inc contains the definitions for the Template class
+*	Array.
 *
 * Input:
-*	Input for the classes created is applied in Tester.cpp to
-*	test the uses of the class. Outside input includes length
-*	and starting index for the Array class, and a message in the
-*	exception class.
+*	Receives input from calls to declarations in the Array.h
+* 
 *
 * Output:
-*	These classes do not provide output implicitly, but their
+*	These functions do not provide output implicitly, but their
 *	stored values can be reached through member functions.
 ************************************************************/
 #include <iostream>
@@ -36,6 +33,7 @@
 template <typename T>
 Array<T>::Array()
 {
+	
 	m_length = 10;
 	m_start_index = 0;
 	m_array = new T[m_length];
@@ -55,6 +53,9 @@ template <typename T>
 Array<T>::Array(int length, int start_index = 0)
 	:m_length(length), m_start_index(start_index)
 {
+	if (length <= 0)
+		throw Exception("Array length must be greater than 0");
+
 	m_array = new T[length];
 }
 
@@ -121,48 +122,73 @@ Array<T>& Array<T>::operator= (const Array &rhs)
 *          Exit:	Assigns member variable m_length to 10 and
 *					member variable m_start_index to 0. Creates
 *					array on the heap.
+*
+*		Exception:	Checks that index is within range of the 
+*					array. 
 ****************************************************************/
 template <typename T>
 T& Array<T>::operator[](int index)
 {
-	try{
-		if (index < m_start_index || index >= m_start_index + m_length)
-		{
-			throw index;
-		}
 
-		
-	}
-	catch (int e)
-	{
-		Exception except("Index out of Range");
-
-		cout << e << " " << except << endl;
-	}
-	
+	if (index < m_start_index || index >= m_start_index + m_length)
+		throw Exception("Index out of bounds");
 	
 	int trueindex = index - m_start_index;
 	return m_array[trueindex];
 }
 
+/**************************************************************
+*	  Purpose:		Member variable, m_start_index, inspector
+*
+*         Entry:	None
+*
+*          Exit:	Returns data stored in member variable 
+*					m_start_index.
+****************************************************************/
 template <typename T>
 int Array<T>::getStartIndex()
 {
 	return m_start_index;
 }
 
+/**************************************************************
+*	  Purpose:		Member variable, m_start_index, mutator
+*
+*         Entry:	Argument contains variable start_index which
+*					will replace data currently stored in 
+*					m_start_index.
+*
+*          Exit:	Returns no value.
+****************************************************************/
 template <typename T>
 void Array<T>::setStartIndex(int start_index)
 {
 	m_start_index = start_index;
 }
 
+/**************************************************************
+*	  Purpose:		Member variable, m_length, inspector
+*
+*         Entry:	None
+*
+*          Exit:	Returns data stored in member variable
+*					m_length.
+****************************************************************/
 template <typename T>
 int Array<T>::getLength()
 {
 	return m_length;
 }
 
+/**************************************************************
+*	  Purpose:		Member variable, m_length, mutator
+*
+*         Entry:	Argument contains variable length which
+*					will replace data currently stored in
+*					m_length.
+*
+*          Exit:	Returns no value.
+****************************************************************/
 template <typename T>
 void Array<T>::setLength(int length)
 {
