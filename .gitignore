@@ -3,3 +3,14 @@ Assignment1/Assignment1.sln
 *.vcxproj
 Assignment1/Assignment1.vcxproj.filters
 *.suo
+Assignment1/Debug/Assignment1.tlog/link.write.1.tlog
+*.log
+Assignment1/Debug/Assignment1.exe
+*.ilk
+Assignment1/Debug/Assignment1.pdb
+*.lastbuildstate
+Assignment1/Debug/Assignment1.tlog/cl.command.1.tlog
+*.tlog
+*.obj
+Assignment1/Debug/vc120.idb
+Assignment1/Debug/vc120.pdb
