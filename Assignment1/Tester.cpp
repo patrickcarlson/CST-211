@@ -21,6 +21,7 @@
 ************************************************************/
 #include <iostream>
 #include "Array.h"
+#include "Exception.h"
 
 using namespace std;
 
@@ -139,7 +140,7 @@ void subscripttest()
 }
 
 /*******************************************************************
-*	Purpose:		Testing exception handling in Array class, utilzing
+*	Purpose:		Testing exception handling in Array class, utilizing
 *					Exception class.
 *
 *	Entry:			Call exceptiontesting function with no arguments.
