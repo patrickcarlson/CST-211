@@ -1,5 +1,7 @@
-#include "Array2D.h"
 #include "Exception.h"
+
+template <typename T>
+class Array2D;
 
 template <typename T>
 class Row
@@ -13,3 +15,5 @@ private:
 	int m_row;
 
 };
+
+#include "Row.inc";

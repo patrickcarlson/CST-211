@@ -1,3 +1,5 @@
+#include "Row.h"
+
 template <typename T>
 class Array2D
 {
