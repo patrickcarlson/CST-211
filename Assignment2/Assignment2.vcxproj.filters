@@ -29,5 +29,8 @@
     <None Include="Array2D.inc">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="Row.inc">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

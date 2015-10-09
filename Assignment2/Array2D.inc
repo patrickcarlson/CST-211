@@ -7,7 +7,10 @@ Array2D<T>::Array2D()
 template <typename T>
 Array2D<T>::Array2D(int row, int col = 0)
 {
-	m_array = new Row*[row];
+	for (int i = 0; i < row; i++)
+	{
+		Row i(this, i);
+	}
 }
 
 template <typename T>
@@ -35,7 +38,7 @@ Row<T> Array2D<T>::operator[](int index)
 }
 
 template <typename T>
-int Array2D<T>::getRow( ) //number of rows
+int Array2D<T>::getRow() //number of rows
 {
 
 }
