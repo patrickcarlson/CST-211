@@ -7,10 +7,7 @@ Array2D<T>::Array2D()
 template <typename T>
 Array2D<T>::Array2D(int row, int col = 0)
 {
-	for (int i = 0; i < row; i++)
-	{
-		Row i(this, i);
-	}
+	Row newRow( 
 }
 
 template <typename T>
