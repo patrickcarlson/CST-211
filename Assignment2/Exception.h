@@ -58,3 +58,8 @@ public:
 private:
 	char* m_msg; //Stored message for thrown exception.
 };
+
+std::ostream& operator<<(std::ostream &stream, const Exception &except) {
+	stream << except.getMessage();
+	return stream;
+}
