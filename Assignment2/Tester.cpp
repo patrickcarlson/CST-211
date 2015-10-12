@@ -24,11 +24,20 @@
 
 using namespace std;
 
+// print function for 2d arrays
 template <typename T>
 void print(Array2D<T> myArray);
+
+// Constructor, copy constructor, and assignment operator tester for Array2D class.
 void ctrcopyassignTester();
+
+// Row and Column mutator testing function.
 void setrowsetcolTester();
+
+// Subscript overload and Select function mutator
 void subscriptselectTester();
+
+// Exception handling testing
 void exceptionTester();
 
 void main()
@@ -43,6 +52,14 @@ void main()
 
 }
 
+/**************************************************************
+*	  Purpose:  Constructor, copy constructor, and assignment
+*				operator tester for Array2D class.
+*
+*         Entry:  Call ctrcopyassignTester with no arguments
+*
+*          Exit:	Does not return any value.
+****************************************************************/
 void ctrcopyassignTester()
 {
 	Array2D<int> testArray(5, 5);
@@ -83,6 +100,13 @@ void ctrcopyassignTester()
 	cout << "Assignment operator test, Cell = Row + Column" << endl;
 }
 
+/**************************************************************
+*	  Purpose:  Row and Column mutator testing function.
+*
+*         Entry:  Call setrowsetcolTester with no arguments
+*
+*          Exit:	Does not return any value.
+****************************************************************/
 void setrowsetcolTester()
 {
 	Array2D<char> testArray(10, 10);
@@ -110,6 +134,13 @@ void setrowsetcolTester()
 	cout << "Previous Array with right 2 columns removed." << endl;
 }
 
+/**************************************************************
+*	  Purpose:  Subscript overload and Select function mutator
+*
+*         Entry:  Call subscriptselectTester with no arguments
+*
+*          Exit:	Does not return any value.
+****************************************************************/
 void subscriptselectTester()
 {
 	Array2D<double> testArray(4, 9);
@@ -135,6 +166,13 @@ void subscriptselectTester()
 	cout << "Value stored in cell 2, 6" << endl;
 }
 
+/**************************************************************
+*	  Purpose:  Exception handling testing
+*
+*         Entry:  Call exceptionTester with no arguments
+*
+*          Exit:	Does not return any value.
+****************************************************************/
 void exceptionTester()
 {
 	Array2D<int> testArray(5, 5);
@@ -199,6 +237,15 @@ void exceptionTester()
 		cout << except << endl;
 	}
 }
+
+/**************************************************************
+*	  Purpose:  print function for 2d arrays
+*
+*         Entry:  Call print function with one argument containing
+*				  and Array2D object.
+*
+*          Exit:	Does not return any value.
+****************************************************************/
 template <typename T>
 void print(Array2D<T> myArray)
 {

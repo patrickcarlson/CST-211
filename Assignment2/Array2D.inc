@@ -18,6 +18,16 @@
 *	utilizing these member functions.
 ************************************************************/
 
+/**************************************************************
+*	  Purpose:  Default constructor for Array2D class.
+*
+*         Entry:  Creation of a new Array2D object with no arguments
+*
+*          Exit:	Assigns member variables m_row and m_col to 
+*					0. Creates array of pointers for member 
+*					variable m_array
+****************************************************************/
+
 template <typename T>
 Array2D<T>::Array2D()
 	:m_row(0), m_col(0)
@@ -27,6 +37,16 @@ Array2D<T>::Array2D()
 	m_array[m_row] = new T[1];
 }
 
+/**************************************************************
+*	  Purpose:		Two argument constructor for Array2D class.
+*
+*         Entry:	Creation of a new Array2D object with two 
+*					arguments.
+*
+*          Exit:	Assigns member variables m_row and m_col to
+*					0. Creates array of pointers for member
+*					variable m_array
+****************************************************************/
 template <typename T>
 Array2D<T>::Array2D(int row, int col = 0)
 	:m_row(row), m_col(col)
@@ -39,6 +59,16 @@ Array2D<T>::Array2D(int row, int col = 0)
 
 }
 
+/**************************************************************
+*	  Purpose:  Copy constructor for Array2D class.
+*
+*         Entry:  Array2D object to be copied.
+*
+*          Exit:	Assigns member variable m_row and m_col to 
+*					associated member variables from copied
+*					2d array. Creates new 2d array, and copies
+*					data to that new 2d array.
+****************************************************************/
 template <typename T>
 Array2D<T>::Array2D(const Array2D &copy)
 {
@@ -61,6 +91,14 @@ Array2D<T>::Array2D(const Array2D &copy)
 
 }
 
+/**************************************************************
+*	  Purpose:  Array2D class destructor/
+*
+*         Entry:  End of life for Array2D object
+*
+*          Exit:	Removes all data from heap corresponding
+*					to an Array2D object.
+****************************************************************/
 template <typename T>
 Array2D<T>::~Array2D()
 {
@@ -72,6 +110,14 @@ Array2D<T>::~Array2D()
 	delete[] m_array;
 }
 
+/**************************************************************
+*	  Purpose:  Assignment operator overload
+*
+*         Entry:  When on Array2D object is assigned to another.
+*
+*          Exit:	Receiving object is deleted. Member variables
+*					are copied over and data as well.
+****************************************************************/
 template <typename T>
 Array2D<T>& Array2D<T>::operator=(const Array2D &rhs)
 {
@@ -103,7 +149,14 @@ Array2D<T>& Array2D<T>::operator=(const Array2D &rhs)
 
 }
 
-
+/**************************************************************
+*	  Purpose:  Subscript operator overload.
+*
+*         Entry:  Indexing to 2d array via subscripts.
+*
+*          Exit:	returns a Row object, which will be used 
+*					to access appropiate data as indexed.
+****************************************************************/
 template <typename T>
 Row<T> Array2D<T>::operator[](int index)
 {
@@ -115,19 +168,37 @@ Row<T> Array2D<T>::operator[](int index)
 }
 
 
+/**************************************************************
+*	  Purpose:  Member variable, m_row, inspector
+*
+*         Entry:  None
+*
+*          Exit:	Returns int value corresponding to the number
+*					of rows in the 2d array.
+****************************************************************/
 template <typename T>
 int Array2D<T>::getRow() //number of rows
 {
 	return m_row;
 }
 
+
+/**************************************************************
+*	  Purpose:  Member variable, m_row, mutator
+*
+*         Entry:  Argument contains number of rows 2d array should
+*				  contain.
+*
+*          Exit:	Returns no value
+****************************************************************/
 template <typename T>
 void Array2D<T>::setRow(int rows)
 {
-
+	// Error checking for out of bound index
 	if (rows < 1)
 		throw Exception("Array must contain at least 1 Row");
 
+	// create new array on the heap
 	T** tempArray = new T*[rows];
 	for (int i = 0; i <  rows; i++)
 	{
@@ -135,6 +206,7 @@ void Array2D<T>::setRow(int rows)
 
 	}
 
+	// copy data into temp array.
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < m_col; j++)
@@ -143,6 +215,7 @@ void Array2D<T>::setRow(int rows)
 		}
 	}
 
+	// delete m_array data from heap
 	for (int i = 0; i < m_row; i++)
 	{
 		delete[] m_array[i];
@@ -152,12 +225,14 @@ void Array2D<T>::setRow(int rows)
 
 	m_row = rows;
 
+	// Rebuild m_array with new row and col
 	m_array = new T*[m_row];
 	for (int i = 0; i < m_row; i++ )
 	{
 		m_array[i] = new T[m_col];
 	}
 
+	// copy temp into m_array
 	for (int i = 0; i < m_row; i++)
 	{
 		for (int j = 0; j < m_col; j++)
@@ -166,6 +241,7 @@ void Array2D<T>::setRow(int rows)
 		}
 	}
 
+	// delete temparray from heap
 	for (int i = 0; i < m_row; i++)
 	{
 		delete[] tempArray[i];
@@ -175,12 +251,28 @@ void Array2D<T>::setRow(int rows)
 
 }
 
+/**************************************************************
+*	  Purpose:  Member variable, m_col, Inspector
+*
+*         Entry:  None
+*
+*          Exit:	Returns number of columns in current 2d 
+*					array object.
+****************************************************************/
 template <typename T>
 int Array2D<T>::getColumn()
 {
 	return m_col;
 }
 
+/**************************************************************
+*	  Purpose:  Member variable, m_col, mutator
+*
+*         Entry:  Argument contains number of columns 2d array 
+*				  will be mutated to.
+*
+*          Exit:	Returns no value
+****************************************************************/
 template <typename T>
 void Array2D<T>::setColumn(int columns)
 {
@@ -238,6 +330,14 @@ void Array2D<T>::setColumn(int columns)
 	
 }
 
+/**************************************************************
+*	  Purpose:  Data access function
+*
+*         Entry:  Requires index of row and column to be accessed
+*
+*          Exit:	Returns reference to data.
+****************************************************************/
+
 template <typename T>
 T& Array2D<T>::Select(int row, int column)
 {
@@ -247,6 +347,6 @@ T& Array2D<T>::Select(int row, int column)
 	if (column < 0 || column >= m_col)
 		throw Exception("Column index out of range");
 
-	T* something = m_array[row];
-	return something[column];
+	T* data = m_array[row];
+	return data[column];
 }
