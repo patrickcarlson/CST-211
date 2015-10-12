@@ -1,9 +1,30 @@
-
+/***********************************************************
+* Author:					Patrick Carlson
+* Date Created:				10/8/2015
+* Last Modification Date:	10/11/2015
+* Assignment Number:		CST 211 Assignment 2
+* Filename:					Array2D.inc
+*
+* Overview:
+*	Array2D.inc contains the definitions for the Template class
+*	Array2D. Declarations are in the Array2D.h file.
+*
+* Input:
+*	Receives input from calls to declarations in the Array2D.h
+*
+* Output:
+*	These Functions do not provide output implicitly. Member
+*	variables and data stored in the array can be accessed 
+*	utilizing these member functions.
+************************************************************/
 
 template <typename T>
 Array2D<T>::Array2D()
+	:m_row(0), m_col(0)
 {
-
+	m_array = new T *[1];
+	
+	m_array[m_row] = new T[1];
 }
 
 template <typename T>
@@ -86,6 +107,9 @@ Array2D<T>& Array2D<T>::operator=(const Array2D &rhs)
 template <typename T>
 Row<T> Array2D<T>::operator[](int index)
 {
+	if (index < 0 || index >= m_row)
+		throw Exception("Row index is out of Range.");
+
 	Row<T> rowObj(*this, index);
 	return rowObj;
 }
@@ -100,6 +124,10 @@ int Array2D<T>::getRow() //number of rows
 template <typename T>
 void Array2D<T>::setRow(int rows)
 {
+
+	if (rows < 1)
+		throw Exception("Array must contain at least 1 Row");
+
 	T** tempArray = new T*[rows];
 	for (int i = 0; i <  rows; i++)
 	{
@@ -156,6 +184,9 @@ int Array2D<T>::getColumn()
 template <typename T>
 void Array2D<T>::setColumn(int columns)
 {
+	if (columns < 1)
+		throw Exception("Array must contain at least 1 Column");
+
 	//TempArray to store copied data from m_array
 	T** tempArray = new T*[m_row];
 	
@@ -210,6 +241,12 @@ void Array2D<T>::setColumn(int columns)
 template <typename T>
 T& Array2D<T>::Select(int row, int column)
 {
+	if (row < 0 || row >= m_row)
+		throw Exception("Row index out of range");
+
+	if (column < 0 || column >= m_col)
+		throw Exception("Column index out of range");
+
 	T* something = m_array[row];
 	return something[column];
 }

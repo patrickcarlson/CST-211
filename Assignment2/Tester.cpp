@@ -1,5 +1,26 @@
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/8/2015
+* Last Modification Date:	10/11/2015
+* Assignment Number:    CST 211 Assignment 2
+* Filename:				Tester.cpp
+*
+* Overview:
+*	This file constains functions utilized to test the
+*	Array2D, Row, and Exception classes.
+*
+* Input:
+*	Tester does not take input.
+*
+* Output:
+*	Output is seen by adding breaks for debugging. Member
+*	functions of the classes created are tested in corresponding
+*	tester functions. Arrays, and messages, are printed to
+*	console.
+************************************************************/
 #include "Array2D.h"
 #include <iostream>
+
 
 using namespace std;
 
@@ -8,6 +29,7 @@ void print(Array2D<T> myArray);
 void ctrcopyassignTester();
 void setrowsetcolTester();
 void subscriptselectTester();
+void exceptionTester();
 
 void main()
 {
@@ -16,6 +38,8 @@ void main()
 	setrowsetcolTester();
 
 	subscriptselectTester();
+
+	exceptionTester();
 
 }
 
@@ -109,6 +133,71 @@ void subscriptselectTester()
 	cout << testArray.Select(2, 6) << endl;
 
 	cout << "Value stored in cell 2, 6" << endl;
+}
+
+void exceptionTester()
+{
+	Array2D<int> testArray(5, 5);
+
+	try
+	{
+		cout << testArray[6][4] << endl;
+	}
+
+	catch (Exception except)
+	{
+		cout << except << endl;
+	}
+
+	try
+	{
+		cout << testArray[4][8] << endl;
+	}
+
+	catch (Exception except)
+	{
+		cout << except << endl;
+	}
+
+	try
+	{
+		testArray.setRow(-1);
+	}
+
+	catch (Exception except)
+	{
+		cout << except << endl;
+	}
+
+	try
+	{
+		testArray.setColumn(0);
+	}
+
+	catch (Exception except)
+	{
+		cout << except << endl;
+	}
+
+	try
+	{
+		testArray.Select(6, 6);
+	}
+
+	catch (Exception except)
+	{
+		cout << except << endl;
+	}
+
+	try
+	{
+		testArray.Select(4, 6);
+	}
+
+	catch (Exception except)
+	{
+		cout << except << endl;
+	}
 }
 template <typename T>
 void print(Array2D<T> myArray)
