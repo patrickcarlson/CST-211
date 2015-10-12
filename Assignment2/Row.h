@@ -7,11 +7,11 @@ template <typename T>
 class Row
 {
 public:
-	Row(Array2D& array, int row) :m_row(row), m_array2D(array) { }
-	T& operator[](int column) { return array.Select(row, column) }
+	Row(Array2D<T>& array, int row) :m_row(row), m_array2D(array) { }
+	T& operator[](int column) { return m_array2D.Select(m_row, column); }
 
 private:
-	Array2D& m_array2D;
+	Array2D<T>& m_array2D;
 	int m_row;
 
 };

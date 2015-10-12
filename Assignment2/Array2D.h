@@ -14,7 +14,7 @@ public:
 	void setRow(int rows);
 	int getColumn();
 	void setColumn(int columns);
-	T Select(int row, int column);
+	T& Select(int row, int column);
 
 private:
 	T** m_array;
