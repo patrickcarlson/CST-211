@@ -1,3 +1,27 @@
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/1/2015
+* Last Modification Date:	10/11/2015
+* Assignment Number:    CST 211 Assignment 2
+* Filename:				Exception.h
+*
+* Overview:
+*	This files contains the Exception class, used to throw
+*	custom error messages for invalid parameters set by
+*	users.
+*
+* Input:
+*	Constructor takes an input of a String which is used
+*	as the message when an exception is thrown.
+*
+* Output:
+*	Utilizes the overloaded ostream operator to easily
+*	use output methods to display thrown exception's 
+*	message.
+************************************************************/
+#include <iostream>
+
+
 /************************************************************************
 * Class: Exception
 *
@@ -50,7 +74,8 @@ public:
 	void setMessage(char *msg){ m_msg = msg; }
 
 	// ostream operator overload.
-	friend std::ostream& operator<<(std::ostream &stream, const Exception &except) {
+	friend std::ostream& operator<<(std::ostream &stream, const Exception &except)
+	{
 		stream << except.m_msg;
 		return stream;
 	}
