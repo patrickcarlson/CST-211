@@ -4,6 +4,22 @@
 template <typename T>
 class Node
 {
+public:
+	Node();
+	Node(T& data);
+	Node(const Node& copy);
+	~Node();
+	Node& operator = (const Node& rhs);
+	getData();
+	setData(T newData);
+	/*
+	* Mutators/Accessors
+	*/
+private:
+	T m_data;
+	Node* m_next;
+	Node* m_prev;
+
 
 };
 
