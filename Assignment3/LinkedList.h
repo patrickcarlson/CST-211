@@ -23,6 +23,46 @@
 #include "Node.h"
 #include "Iterator.h"
 
+/************************************************************************
+* Class: Node.h
+*
+* Constructors:
+*		LinkedList()
+*				Default constructor assigns member variables m_head and 
+*				m_tail to nullptr.
+*		LinkedList(const LinkedList<T>& copy)
+*				Copy constructor *Forgot a deep copy....too late*
+*		~LinkedList()
+*				Destructor
+*
+* Mutators:
+*
+*		void Prepend(T* input)
+*				Allows node to be prepended to list.
+*		void Append(T* input)
+*				Allows node to be appended to list.
+*		void Purge()
+*				Removes all nodes in linked list.
+*		Node<T>& Extract(T input)
+*				Removes first item on list holding data of same value
+*				as input.
+*		void insertAfter(T data, T* inNode)
+*				Inserts node after node holding entered data value.
+*		
+*
+* Methods:
+*		bool isEmpty()
+*				returns bool if no nodes are present in list.
+*		const Node<T>& First()
+*				returns member variable m_head
+*		const Node<T>& Last()
+*				returns member variable m_tail
+*		const Iterator<T> Begin()
+*				returns iterator to m_head node
+*		const Iterator<T> End()
+*				returns iterator to m_tail node
+*				
+*************************************************************************/
 template <typename T>
 class LinkedList
 {
@@ -64,10 +104,10 @@ public:
 	void insertAfter(T data, T* inNode);
 
 	// Iterator of Head node.
-	Iterator<T> Begin();
+	const Iterator<T> Begin();
 
 	// Iterator of tail node.
-	Iterator<T> End();
+	const Iterator<T> End();
 
 private:
 	Node<T>* m_tail; // Last node in list

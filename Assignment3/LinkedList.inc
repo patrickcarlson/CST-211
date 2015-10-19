@@ -18,6 +18,15 @@
 *	within the linked list.
 ************************************************************/
 
+
+/**************************************************************
+*	  Purpose:  Default constructor
+*
+*         Entry: 
+*
+*          Exit:	Assigns member variables m_head and m_tail
+*					to nullptr.
+****************************************************************/
 template <typename T>
 LinkedList<T>::LinkedList()
 {
@@ -27,6 +36,13 @@ LinkedList<T>::LinkedList()
 	
 }
 
+/**************************************************************
+*	  Purpose:  Copy Constructor
+*
+*         Entry:	LinkedList object to be copied
+*
+*          Exit:	Failed to perform deep copy. Too late.
+****************************************************************/
 template <typename T>
 LinkedList<T>::LinkedList(const LinkedList<T>& copy)
 {
@@ -35,8 +51,16 @@ LinkedList<T>::LinkedList(const LinkedList<T>& copy)
 		m_head = nullptr;
 		m_tail = nullptr;
 	}
+
 }
 
+/**************************************************************
+*	  Purpose:  Destructor
+*
+*         Entry:
+*
+*          Exit:	Deletes nodes, which are dynamically allocated
+****************************************************************/
 template <typename T>
 LinkedList<T>::~LinkedList()
 {
@@ -51,6 +75,14 @@ LinkedList<T>::~LinkedList()
 
 }
 
+/**************************************************************
+*	  Purpose:  Assignment operator overload
+*
+*         Entry:	Linked list object that is to be copied.
+*
+*          Exit:	Returns new linked list with same data
+*					values as copied list.
+****************************************************************/
 template <typename T>
 LinkedList<T>& LinkedList<T>::operator = (const LinkedList& rhs)
 {	
@@ -88,6 +120,13 @@ LinkedList<T>& LinkedList<T>::operator = (const LinkedList& rhs)
 
 }
 
+/**************************************************************
+*	  Purpose:  List status inspector.
+*
+*         Entry:
+*
+*          Exit:	Returns false unless list has no nodes.
+****************************************************************/
 template <typename T>
 bool LinkedList<T>::isEmpty()
 {
@@ -97,18 +136,39 @@ bool LinkedList<T>::isEmpty()
 		return false;
 }
 
+/**************************************************************
+*	  Purpose:  Inspector for member variable m_head.
+*
+*         Entry:
+*
+*          Exit:	Return member variable m_head
+****************************************************************/
 template <typename T>
 const Node<T>& LinkedList<T>::First()
 {
 	return m_head;
 }
 
+/**************************************************************
+*	  Purpose:  Inspector for member variable m_tail.
+*
+*         Entry:
+*
+*          Exit:	Return member variable m_tail.
+****************************************************************/
 template <typename T>
 const Node<T>& LinkedList<T>::Last()
 {
 	return m_tail;
 }
 
+/**************************************************************
+*	  Purpose:  Assign node to front of linked list
+*
+*         Entry:	data value for new node to contain
+*
+*          Exit:	
+****************************************************************/
 template <typename T>
 void LinkedList<T>::Prepend(T* input)
 {
@@ -129,6 +189,13 @@ void LinkedList<T>::Prepend(T* input)
 	m_head = newNode;
 }
 
+/**************************************************************
+*	  Purpose:  Assign node to back of linked list
+*
+*         Entry:	data value for new node to contain
+*
+*          Exit:
+****************************************************************/
 template <typename T>
 void LinkedList<T>::Append(T* input)
 {
@@ -154,6 +221,13 @@ void LinkedList<T>::Append(T* input)
 
 }
 
+/**************************************************************
+*	  Purpose:  Remove all dynamically allocated nodes from list
+*
+*         Entry:	
+*
+*          Exit:
+****************************************************************/
 template <typename T>
 void LinkedList<T>::Purge()
 {
@@ -165,8 +239,18 @@ void LinkedList<T>::Purge()
 		delete delNode;
 		delNode = nextNode;
 	}
+
+	m_head = nullptr;
+	m_tail = nullptr;
 }
 
+/**************************************************************
+*	  Purpose:  Remove node containing indicated value
+*
+*         Entry:	Data to be matched to node
+*
+*          Exit:	
+****************************************************************/
 template <typename T>
 Node<T>& LinkedList<T>::Extract(T input)
 {
@@ -201,6 +285,14 @@ Node<T>& LinkedList<T>::Extract(T input)
 	}
 }
 
+/**************************************************************
+*	  Purpose:  insert node after node containing indicated 
+*				value
+*
+*         Entry:	Data to be matched to node, data for new node
+*
+*          Exit:
+****************************************************************/
 template <typename T>
 void LinkedList<T>::insertAfter(T data, T* inNode)
 {
@@ -209,24 +301,38 @@ void LinkedList<T>::insertAfter(T data, T* inNode)
 		if (*i == data)
 		{
 			Node<T>* newNode = new Node<T>(inNode);
-			newNode->m_prev = curNode;
-			curNode->m_next = newNode;
+			newNode->setPrev(curNode);
+			curNode->setNext(newNode);
 
 			m_tail = newNode;
 		}
 	}
 }
 
+/**************************************************************
+*	  Purpose:  Inspector returning iterator to first node.
+*
+*         Entry:	
+*
+*          Exit:	Returns iterator for first node.
+****************************************************************/
 template <typename T>
-Iterator<T> LinkedList<T>::Begin()
+const Iterator<T> LinkedList<T>::Begin()
 {
 	Iterator<T> first(m_head);
 
 	return first;
 }
 
+/**************************************************************
+*	  Purpose:  Inspector returning iterator to last node.
+*
+*         Entry:
+*
+*          Exit:	Returns iterator for last node.
+****************************************************************/
 template <typename T>
-Iterator<T> LinkedList<T>::End()
+const Iterator<T> LinkedList<T>::End()
 {
 	Iterator<T> last(m_tail->getNext());
 
