@@ -1,3 +1,22 @@
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/18/2015
+* Last Modification Date:	10/18/2015
+* Assignment Number:    CST 211 Assignment 3
+* Filename:				Driver.cpp
+*
+* Overview:
+*	This file constains functions utilized to test the
+*	Linked List class, including Node and iterator classes
+*
+* Input:
+*	Tester does not take input.
+*
+* Output:
+*	Output is seen by adding breaks for debugging. Lists
+*	are output to console for testing purposes
+************************************************************/
+
 #include "LinkedList.h"
 #include <iostream>
 

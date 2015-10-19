@@ -1,3 +1,22 @@
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/13/2015
+* Last Modification Date:	10/18/2015
+* Assignment Number:    CST 211 Assignment 3
+* Filename:				Iterator.h
+*
+* Overview:
+*	This is the header file for the Iterator class, which
+*	is utilized to iterate through a doubly linked list.
+*
+* Input:
+*	On construction it takes in a pointer to a Node.
+*
+* Output:
+*	Accessor functions allow manipulation of data stored
+*	within the linked list.
+************************************************************/
+
 #ifndef ITERATOR_H
 #define ITERATOR_H
 

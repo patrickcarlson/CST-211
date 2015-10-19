@@ -1,9 +1,23 @@
-/*template <typename T>
-Node<T>::Node()
-{
-
-}
-*/
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/13/2015
+* Last Modification Date:	10/18/2015
+* Assignment Number:    CST 211 Assignment 3
+* Filename:				Node.inc
+*
+* Overview:
+*	This is the .inc file for the Node class. The node
+*	class is utilized to store position and data information
+*	for a doubley linked list. This file holds the 
+*	member function definitions.
+*
+* Input:
+*	On construction a Node takes data to store.
+*
+* Output:
+*	Accessor functions allow manipulation of data stored
+*	within the Node.
+************************************************************/
 
 template <typename T>
 Node<T>::Node(T& data)
@@ -12,31 +26,7 @@ Node<T>::Node(T& data)
 	m_next = nullptr;
 	m_prev = nullptr;
 }
-/*
 
-//
-//Necessary?
-//
-template <typename T>
-Node<T>::Node(const Node& copy)
-{
-	m_data = copy.m_data;
-	m_prev = nullptr;
-	m_next = nullptr;
-}
-
-template <typename T>
-Node<T>::~Node()
-{
-
-}
-
-template <typename T>
-Node& Node<T>::operator =(const Node& rhs)
-{
-
-}
-*/
 
 template <typename T>
 T& Node<T>::getData()

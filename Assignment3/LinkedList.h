@@ -27,9 +27,16 @@ template <typename T>
 class LinkedList
 {
 public:
+	//default constructor for Linked List
 	LinkedList();
+
+	//single argument constructor for Linked List
 	LinkedList(const LinkedList& copy);
+
+	//Linked list destructor
 	~LinkedList();
+
+	//
 	LinkedList& operator = (const LinkedList& rhs);
 	bool isEmpty();
 	const Node<T>& First();

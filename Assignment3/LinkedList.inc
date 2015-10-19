@@ -1,4 +1,22 @@
-
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/13/2015
+* Last Modification Date:	10/18/2015
+* Assignment Number:    CST 211 Assignment 3
+* Filename:				LinkedList.inc
+*
+* Overview:
+*	This is the inc file for the templated LinkedList
+*	class. LinkedList is a doubly linked list storing the
+*	locations of the first and last node in the list.
+*
+* Input:
+*
+*
+* Output:
+*	Accessor functions allow manipulation of data stored
+*	within the linked list.
+************************************************************/
 
 template <typename T>
 LinkedList<T>::LinkedList()

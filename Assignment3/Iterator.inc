@@ -1,29 +1,27 @@
-/*
-template <typename T>
-Iterator<T>::Iterator()
-{
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/13/2015
+* Last Modification Date:	10/18/2015
+* Assignment Number:    CST 211 Assignment 3
+* Filename:				Iterator.inc
+*
+* Overview:
+*	This is the .inc file for the Iterator class, which
+*	is utilized to iterate through a doubly linked list.
+*
+* Input:
+*	On construction it takes in a pointer to a Node.
+*
+* Output:
+*	Accessor functions allow manipulation of data stored
+*	within the linked list.
+************************************************************/
 
-}
-*/
 template <typename T>
 Iterator<T>::Iterator(Node<T> *P)
 {
 	m_node = P;
 }
-
-/*
-template <typename T>
-Iterator<T>::~Iterator() {
-
-}
-
-template <typename T>
-Iterator& Iterator<T>::operator =(const Iterator& rhs)
-{
-
-}
-
-*/
 
 template <typename T>
 Iterator<T>& Iterator<T>::operator++()
