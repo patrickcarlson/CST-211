@@ -26,7 +26,7 @@ LinkedList<T>::~LinkedList()
 
 	while (delNode != nullptr)
 	{
-		Node<T>* nextNode = delNode->m_next;
+		Node<T>* nextNode = delNode->getNext();
 		delete delNode;
 		delNode = nextNode;
 	}
@@ -40,12 +40,12 @@ LinkedList<T>& LinkedList<T>::operator = (const LinkedList& rhs)
 
 	while (delNode != nullptr)
 	{
-		Node<T>* nextNode = delNode->m_next;
+		Node<T>* nextNode = delNode->getNext();
 		delete delNode;
 		delNode = nextNode;
 	}
 
-	if (rhs.m_head == nulptr)
+	if (rhs.m_head == nullptr)
 	{
 		m_head = nullptr;
 		m_tail = nullptr;
@@ -60,9 +60,9 @@ LinkedList<T>& LinkedList<T>::operator = (const LinkedList& rhs)
 	while (curNode != nullptr)
 	{
 			
-		this->Append(curNode->m_data);
+		this->Append(&curNode->getData());
 
-		nextNode = curNode->m_next;
+		nextNode = curNode->getNext();
 
 		curNode = nextNode;
 
@@ -94,21 +94,46 @@ const Node<T>& LinkedList<T>::Last()
 template <typename T>
 void LinkedList<T>::Prepend(T* input)
 {
-	Node<T>* newNode = new Node<T>(input);
-	Node<T>* oldNode = this->m_head;
-	oldNode->m_prev = newNode;
-	newNode->m_next = oldNode;
-	this->m_head = newNode;
+	Node<T>* newNode = new Node<T>(*input);
+	Node<T>* oldNode = m_head;
+	if (!oldNode)
+	{
+		m_tail = newNode;
+		m_head = newNode;
+	}
+
+	else
+	{
+		m_head = newNode;
+		oldNode->setPrev(newNode);
+		newNode->setNext(oldNode);
+	}
+	m_head = newNode;
 }
 
 template <typename T>
 void LinkedList<T>::Append(T* input)
 {
-	Node<T>* newNode = new Node<T>(input);
-	Node<T>* oldLast = this->m_tail;
-	oldLast->m_next = newNode;
-	newNode->m_prev = oldLast;
-	this->m_tail = newNode;
+	
+	
+	Node<T>* newNode = new Node<T>(*input);
+	Node<T>* oldLast = m_tail;
+
+	if (!oldLast)
+	{
+		m_head = newNode;
+		m_tail = newNode;
+				
+	}
+	
+	else
+	{
+		m_tail = newNode;
+		oldLast->setNext(newNode);
+		newNode->setPrev(oldLast);
+
+	}
+
 }
 
 template <typename T>
@@ -118,7 +143,7 @@ void LinkedList<T>::Purge()
 	
 	while (delNode != nullptr)
 	{
-		Node<T>* nextNode = delNode->m_next;
+		Node<T>* nextNode = delNode->getNext();
 		delete delNode;
 		delNode = nextNode;
 	}
@@ -127,49 +152,66 @@ void LinkedList<T>::Purge()
 template <typename T>
 Node<T>& LinkedList<T>::Extract(T input)
 {
-	//iterate
-	//fix the if
-	//set curNode
-	if (data == input)
+	for (Iterator<T> i = this->Begin(); i != this->End(); ++i)
 	{
-		Node<T>* afterNode = curNode->m_next;
-		Node<T>* beforeNode = curNode->m_prev;
 
-		//delete curNode;
+		if (*i == input)
+		{
+			Node<T>* curNode = &i.getItNode();
+			Node<T>* afterNode = curNode->getNext();			
+			Node<T>* beforeNode = curNode->getPrev();
+			if (afterNode == nullptr)
+			{
+				m_tail = curNode;
+				beforeNode->setNext(nullptr);
 
-		afterNode->m_prev = beforeNode;
-		beforeNode->m_next = afterNode;
+				return *curNode;
+			}
+			else if (beforeNode == nullptr)
+			{
+				m_head = curNode;
+				afterNode->setPrev(nullptr);
 
-		return curNode;
+				return *curNode;
+			}
+
+			afterNode->setPrev(beforeNode);
+			beforeNode->setNext(afterNode);
+
+			return *curNode;
+		}
 	}
 }
 
 template <typename T>
 void LinkedList<T>::insertAfter(T data, T* inNode)
 {
-	//iterate
-	//fix the if
-	//set curNode
-	if (m_data == data)
+	for (Iterator i = this->Begin(); i != this->End(); ++i)
 	{
-		Node<T>* newNode = new Node<T>(inNode);
-		newNode->m_prev = curNode;
-		curNode->m_next = newNode;
+		if (*i == data)
+		{
+			Node<T>* newNode = new Node<T>(inNode);
+			newNode->m_prev = curNode;
+			curNode->m_next = newNode;
 
-		m_tail = newNode;
+			m_tail = newNode;
+		}
 	}
 }
 
-//implimant?
 template <typename T>
-Iterator LinkedList<T>::Begin()
+Iterator<T> LinkedList<T>::Begin()
 {
-	return 0;
+	Iterator<T> first(m_head);
+
+	return first;
 }
 
-//implimant?
 template <typename T>
-Iterator LinkedList<T>::End()
+Iterator<T> LinkedList<T>::End()
 {
-	return 0;
+	Iterator<T> last(m_tail->getNext());
+
+	return last;
 }
+

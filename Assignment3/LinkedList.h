@@ -32,19 +32,19 @@ public:
 	~LinkedList();
 	LinkedList& operator = (const LinkedList& rhs);
 	bool isEmpty();
-	const Node& First();
-	const Node& Last();
+	const Node<T>& First();
+	const Node<T>& Last();
 	void Prepend(T* input);
 	void Append(T* input);
 	void Purge();
-	Node& Extract(T input);
+	Node<T>& Extract(T input);
 	void insertAfter(T data, T* inNode);
-	Iterator Begin();
-	Iterator End();
+	Iterator<T> Begin();
+	Iterator<T> End();
 
 private:
-	Node* m_tail;
-	Node* m_head;
+	Node<T>* m_tail;
+	Node<T>* m_head;
 };
 
 #include "LinkedList.inc"

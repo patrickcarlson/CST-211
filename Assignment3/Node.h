@@ -5,16 +5,14 @@ template <typename T>
 class Node
 {
 public:
-	Node();
 	Node(T& data);
-	Node(const Node& copy);
-	~Node();
-	Node& operator = (const Node& rhs);
-	T getData();
-	setData(T newData);
-	/*
-	* Mutators/Accessors
-	*/
+	T& getData();
+	void setData(const T newData);
+	Node* getNext();
+	Node* getPrev();
+	void setNext(Node<T>* input);
+	void setPrev(Node<T>* input);
+	
 private:
 	T m_data;
 	Node* m_next;
