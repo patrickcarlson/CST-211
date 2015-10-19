@@ -10,7 +10,7 @@ public:
 	Node(const Node& copy);
 	~Node();
 	Node& operator = (const Node& rhs);
-	getData();
+	T getData();
 	setData(T newData);
 	/*
 	* Mutators/Accessors

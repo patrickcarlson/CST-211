@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:				Patrick Carlson
 * Date Created:			10/13/2015
-* Last Modification Date:	10/13/2015
+* Last Modification Date:	10/18/2015
 * Assignment Number:    CST 211 Assignment 3
 * Filename:				LinkedList.h
 *
@@ -14,8 +14,8 @@
 *	
 *
 * Output:
-*	Using accessor functions. LinkedList can be used to return
-*	values stored within. 
+*	Accessor functions allow manipulation of data stored
+*	within the linked list.
 ************************************************************/
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
