@@ -12,7 +12,7 @@ public:
 private:
 	int m_numRows;
 	int m_numCols;
-	Array2D boardArray;
+	Array2D<cell> boardArray;
 	int m_numMines;
 
 };
