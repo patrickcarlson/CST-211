@@ -24,6 +24,18 @@
     <ClInclude Include="Row.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="minesweeper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Driver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Array2D.inc">
@@ -35,5 +47,19 @@
     <None Include="Exception.inc">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="minesweeper.inc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="board.inc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="cell.inc">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Driver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
