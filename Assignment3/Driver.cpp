@@ -24,25 +24,32 @@ using namespace std;
 
 void main()
 {
+	// create new Linked List
 	LinkedList<int> newList;
 
+	// variable used to pass values into list
 	int newInt = 5;
 
+	// testing append functionality
 	newList.Append(&newInt);
 
 	newInt = 8;
 
+	// testing append functionality
 	newList.Append(&newInt);
 
 	newInt = 10;
 
+	// testing prepend functionality
 	newList.Prepend(&newInt);
 
+	// Testing iterator functionality
 	for (Iterator<int> i = newList.Begin(); i != newList.End(); ++i)
 	{
 		cout << *i << " ";
 	}
 
+	// Testing assignment operator
 	LinkedList<int> otherList;
 	otherList = newList;
 
@@ -51,6 +58,7 @@ void main()
 		cout << *i << " ";
 	}
 
+	// Testing extract functionality
 	newList.Extract(8);
 
 	for (Iterator<int> i = newList.Begin(); i != newList.End(); ++i)
@@ -58,6 +66,7 @@ void main()
 		cout << *i << " ";
 	}
 
+	// Testing Purge functionality
 	newList.Purge();
 
 	for (Iterator<int> i = newList.Begin(); i != newList.End(); ++i)
@@ -65,6 +74,7 @@ void main()
 		cout << *i << " ";
 	}
 
+	// Testing copy constructor functionality
 	LinkedList<int> anotherList(otherList);
 
 	for (Iterator<int> i = otherList.Begin(); i != otherList.End(); ++i)
