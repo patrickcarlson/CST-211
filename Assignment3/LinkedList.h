@@ -24,7 +24,7 @@
 #include "Iterator.h"
 
 /************************************************************************
-* Class: Node.h
+* Class: LinkedList.h
 *
 * Constructors:
 *		LinkedList()

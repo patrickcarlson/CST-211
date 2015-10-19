@@ -17,12 +17,27 @@
 *	within the linked list.
 ************************************************************/
 
+/**************************************************************
+*	  Purpose:  Single argument constructor of Iterator class
+*
+*         Entry:  Creation of a new Iterator object with 1 argument
+*
+*          Exit:	Assign m_node member variable to argument
+*					of P.
+****************************************************************/
 template <typename T>
 Iterator<T>::Iterator(Node<T> *P)
 {
 	m_node = P;
 }
 
+/****************************************************************
+*		Purpose: Post increment operator overload.
+*
+*			Entry:
+*
+*			 Exit: Moves iterators node value to next node
+*****************************************************************/
 template <typename T>
 Iterator<T>& Iterator<T>::operator++()
 {
@@ -31,6 +46,13 @@ Iterator<T>& Iterator<T>::operator++()
 		return *this;
 }
 
+/****************************************************************
+*		Purpose: Pre increment operator overload.
+*
+*			Entry:
+*
+*			 Exit: Moves iterators node value to next node
+*****************************************************************/
 template <typename T>
 Iterator<T>& Iterator<T>::operator++(int input)
 {
@@ -45,12 +67,26 @@ Iterator<T>& Iterator<T>::operator++(int input)
 
 }
 
+/****************************************************************
+*		Purpose: Post decrement operator overload.
+*
+*			Entry:
+*
+*			 Exit: Moves iterators node value to previous node
+*****************************************************************/
 template <typename T>
 Iterator<T>& Iterator<T>::operator--()
 {
 	m_node = m_node->getPrev();
 }
 
+/****************************************************************
+*		Purpose: pre decrement operator overload.
+*
+*			Entry: Dummy variable
+*
+*			 Exit: Moves iterators node value to previous node
+*****************************************************************/
 template <typename T>
 Iterator<T>& Iterator<T>::operator--(int input)
 {
@@ -63,6 +99,14 @@ Iterator<T>& Iterator<T>::operator--(int input)
 	return tempIt;
 }
 
+/****************************************************************
+*		Purpose: Dereference operator overload
+*
+*			Entry:
+*
+*			 Exit: Returns values stored in currently iterated 
+*					node.
+*****************************************************************/
 template <typename T>
 T& Iterator<T>::operator*()
 {
@@ -71,18 +115,39 @@ T& Iterator<T>::operator*()
 	return something;
 }
 
+/****************************************************************
+*		Purpose: Equality operator overload
+*
+*			Entry: Iterator object to be compared to
+*
+*			 Exit: returns true if iterators have same node
+*****************************************************************/
 template <typename T>
 bool Iterator<T>::operator==(const Iterator& other)
 {
 	return m_node == other.m_node;
 }
 
+/****************************************************************
+*		Purpose: Equality operator overload
+*
+*			Entry: Iterator object to be compared to
+*
+*			 Exit: returns true if iterators do not have same node
+*****************************************************************/
 template <typename T>
 bool Iterator<T>::operator!=(const Iterator& other)
 {
 	return m_node != other.m_node;
 }
 
+/****************************************************************
+*		Purpose: Inspector for member variable m_node
+*
+*			Entry: 
+*
+*			 Exit: Returns reference to node in iterator.
+*****************************************************************/
 template <typename T>
 Node<T>& Iterator<T>::getItNode()
 {
