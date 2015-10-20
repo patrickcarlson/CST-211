@@ -19,25 +19,15 @@ board::board(int inRow, int inCol, char mode)
 
 	for (int row = 0; row < m_numRows; ++row)
 	{
-		for (int col = 0; col < m_numCols; ++col)
-		{
-			if (bombCount == 0)
-				ranBomb = 0;
-			else
-			ranBomb = rand() % 3;
+		int randCol = rand() % 10;
 
-			if (ranBomb == 1)
-			{
-				bombCount--;
 
-				cell* newCell;
+		cell* newCell = &m_boardArray->Select(row, randCol);
 
-				newCell = &m_boardArray->Select(row, col);
-
-				newCell->setbombStatus();
-			}
+		newCell->setbombStatus();
 			
-		}
+			
+	
 	}
 
 	for (int row = 0; row < m_numRows; ++row)
@@ -64,7 +54,7 @@ board::board(int inRow, int inCol, char mode)
 
 			cell* curCell = &m_boardArray->Select(row, col);
 
-			curCell->setbombCount(bombCount);
+			curCell->setbombCount(cellBombs);
 		}
 	}
 
@@ -113,5 +103,23 @@ void board::clearEmpties(int row, int col)
 	if (col - 1 >= 0 && !bombinfo(row, col - 1) && coverInfo(row, col - 1))
 	{
 		clearEmpties(row, col - 1);
+	}
+}
+
+void board::print()
+{
+	for (int row = 0; row < m_numRows; ++row)
+	{
+		for (int col = 0; col < m_numCols; ++col)
+		{
+			cell* curCell = &m_boardArray->Select(row, col);
+
+			if (curCell->getCoverStatus())
+				std::cout << 'E' << " ";
+			else
+				std::cout << curCell->getbombCount() << " ";
+
+		}
+		std::cout << std::endl;
 	}
 }

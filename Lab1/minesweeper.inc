@@ -12,14 +12,14 @@ void minesweeper::select(int row, int col)
 	{
 		loseGame = true;
 
+		std::cout << "That was a bomb!" << std::endl;
+
 		return;
 	}
 
-	else
+	gameBoard->clearEmpties(row, col);
 
-		gameBoard->clearEmpties(row, col);
-
-		//gameBoard->uncover(row, col);
+	gameBoard->print();
 
 
 }

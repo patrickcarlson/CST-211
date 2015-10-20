@@ -1,6 +1,7 @@
 #ifndef MINESWEEPER_H
 #define MINESWEEPER_H
 
+#include <iostream>
 #include "board.h"
 
 class minesweeper

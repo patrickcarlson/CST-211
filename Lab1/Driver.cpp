@@ -92,5 +92,7 @@ void easyGame()
 		cin >> lrow >> lcol;
 
 		easygame.select(lrow, lcol);
+
+		
 	}
 }
