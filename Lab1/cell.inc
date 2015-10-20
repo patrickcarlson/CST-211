@@ -36,3 +36,8 @@ void cell::uncover()
 {
 	m_covered = false;
 }
+
+bool cell::getCoverStatus()
+{
+	return m_covered;
+}

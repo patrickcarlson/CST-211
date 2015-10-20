@@ -80,16 +80,17 @@ void menu()
 
 void easyGame()
 {
-	int lrow = 6;
-	int lcol = 6;
+	int lrow = 0;
+	int lcol = 0;
 	minesweeper easygame(10, 10, 'b');
-	//while (!easyGame.lose() && !easyGame.win())
-	//{
-//		cout << "select your next location" << endl;
+
+	while (!easygame.lose() && !easygame.win())
+	{
+		cout << "select your next location" << endl;
 		//needs error checking
 		//infinite loops are fun
-//		cin >> lrow >> lcol;
+		cin >> lrow >> lcol;
 
-		easygame.select(6, 6);
-	//}
+		easygame.select(lrow, lcol);
+	}
 }

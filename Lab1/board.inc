@@ -1,8 +1,8 @@
 board::board(int inRow, int inCol, char mode)
 	:m_numRows(inRow), m_numCols(inCol)
 {
-	Array2D<cell> newBoardArray(m_numRows, m_numCols);
-	m_boardArray = &newBoardArray;
+	Array2D<cell>* newBoardArray = new Array2D<cell>(m_numRows, m_numCols);
+	m_boardArray = newBoardArray;
 
 	if (mode = 'b')
 		m_numBombs = 10;
@@ -84,26 +84,33 @@ void board::uncover(int row, int col)
 	uncoverCell->uncover();
 }
 
+bool board::coverInfo(int row, int col)
+{
+	cell* checkCell = &m_boardArray->Select(row, col);
+
+	return checkCell->getCoverStatus();
+}
+
 void board::clearEmpties(int row, int col)
 {
 	this->uncover(row, col);
 
-	if (row + 1 < m_numRows && !bombinfo(row + 1, col))
+	if (row + 1 < m_numRows && !bombinfo(row + 1, col) && coverInfo(row + 1, col))
 	{
 		clearEmpties(row + 1, col);
 	}
 
-	if (col + 1 < m_numCols && !bombinfo(row, col + 1))
+	if (col + 1 < m_numCols && !bombinfo(row, col + 1) && coverInfo(row, col + 1))
 	{
 		clearEmpties(row, col + 1);
 	}
 
-	if (row - 1 >= 0 && !bombinfo(row - 1, m_numCols))
+	if (row - 1 >= 0 && !bombinfo(row - 1, col) && coverInfo(row - 1, col))
 	{
-		clearEmpties(row - 1, m_numCols);
+		clearEmpties(row - 1, col);
 	}
 
-	if (col - 1 >= 0 && !bombinfo(row, col - 1))
+	if (col - 1 >= 0 && !bombinfo(row, col - 1) && coverInfo(row, col - 1))
 	{
 		clearEmpties(row, col - 1);
 	}

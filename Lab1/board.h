@@ -11,6 +11,7 @@ public:
 	board(int inRow, int inCol, char mode);
 	bool bombinfo(int row, int col);
 	void uncover(int row, int col);
+	bool coverInfo(int row, int col);
 	void clearEmpties(int row, int col);
 
 private:

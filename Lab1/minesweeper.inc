@@ -3,8 +3,7 @@ minesweeper::minesweeper(int inRow, int inCol, char mode)
 {
 	winGame = false;
 	loseGame = false;
-	board newBoard(m_row, m_col, m_mode);
-	gameBoard = &newBoard;
+	gameBoard = new board(m_row, m_col, m_mode);
 }
 
 void minesweeper::select(int row, int col)

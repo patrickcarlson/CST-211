@@ -11,6 +11,7 @@ public:
 	bool getbombStatus();
 	void setbombStatus();
 	void uncover();
+	bool getCoverStatus();
 
 private:
 	bool m_covered;
