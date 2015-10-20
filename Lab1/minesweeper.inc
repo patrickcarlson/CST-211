@@ -1,3 +1,22 @@
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/17/2015
+* Last Modification Date:	10/20/2015
+* Assignment Number:    CST 211 Lab 1
+* Filename:				minesweeper.inc
+*
+* Overview:
+*	This file is the .inc file for minesweeper class. A
+*	minesweeper object contains various game status checks.
+*
+* Input:
+*	Row and Col sizes to build the board. Mode is passed in
+*	to lay down mines.
+*
+* Output:
+*	Member functions can output bool values corresponding
+*	to win loss states
+************************************************************/
 minesweeper::minesweeper(int inRow, int inCol, char mode)
 	:m_row(inRow), m_col(inCol), m_mode(mode)
 {

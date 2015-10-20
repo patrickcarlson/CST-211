@@ -26,6 +26,32 @@
 #include "Array2D.h"
 #include "cell.h"
 
+/************************************************************************
+* Class: board
+*
+* Constructors:
+*		board(int inRow, int inCol, char mode)
+*				3 argument instructor, takes in arrays dimensions as well
+*				as char coresponding with difficulty level.
+*
+* Mutators:
+*		void uncover(int row, int col)
+*				Used to access cell m_covered member data and adjust.
+*		void clearEmpties(int row, int col)
+*				Recursive function used to clear empty cells adjacent, but
+*				not diagnol to each other. ATM, clears too many, and solves
+*				the game.
+*		void mark(int row, int col)
+*				Allos to set m_mark member variable of corresponding cell
+*		void print()
+*				Prints out user seeable array of game board.
+*
+* Methods:
+*		bool bombinfo(int row, int col)
+*				Returns bool value of bomb status of cell.
+*		bool coverInfo(int row, int col)
+*				Returns bool value of cover status of cell.
+*************************************************************************/
 class board
 {
 public:

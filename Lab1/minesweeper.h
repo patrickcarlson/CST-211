@@ -23,6 +23,31 @@
 #include <iostream>
 #include "board.h"
 
+/************************************************************************
+* Class: minesweeper
+*
+* Constructors:
+*		minesweeper(int inRow, int inCol, char mode)
+*				Constructs a minesweeper object, taking in row and col, 
+*				as well as a character in coordination with difficulty level.
+*		
+*
+* Mutators:
+*		void setbombCount(int numBombs)
+*				Set member variable bombcount.
+*		void uncover()
+*				Sets member variable m_covered to false.
+*		void setmarked()
+*				Set m_marked bool to true.
+*
+* Methods:
+*		void select(int row, int col, bool mark);
+*				Coresponds with clicking on a cell.
+*		bool win();
+*				Returns if win condition is met.
+*		bool lose();
+*				Returns if loss condition is met.
+*************************************************************************/
 class minesweeper
 {
 public:

@@ -1,3 +1,23 @@
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/17/2015
+* Last Modification Date:	10/20/2015
+* Assignment Number:    CST 211 Lab 1
+* Filename:				board.h
+*
+* Overview:
+*	This file is the .inc file for the board class, which 
+*	contains the array for stored minesweeper information.
+*
+* Input:
+*	Row and Col sizes to build the array. Mode is passed in
+*	to lay down mines.
+*
+* Output:
+*	Member functions can output bool values corresponding
+*	to various states within the cell.
+************************************************************/
+
 board::board(int inRow, int inCol, char mode)
 	:m_numRows(inRow), m_numCols(inCol)
 {

@@ -1,3 +1,19 @@
+/***********************************************************
+* Author:				Patrick Carlson
+* Date Created:			10/18/2015
+* Last Modification Date:	10/20/2015
+* Assignment Number:    CST 211 Lab 1
+* Filename:				Driver.cpp
+*
+* Overview:
+*	This is the main driver file for the minesweeper game
+*	and contains the menu.
+*
+* Input:
+*	
+* Output:
+*
+************************************************************/
 #include <iostream>
 
 #include "Driver.h"
@@ -14,9 +30,15 @@ void main()
 {
 	menu();
 	
-	//minesweeper newGame(b);
 }
 
+/**************************************************************
+*	  Purpose:  Menu function
+*
+*         Entry:  
+*
+*          Exit:	End of game
+****************************************************************/
 void menu()
 {
 	char c = b;
@@ -80,6 +102,13 @@ void menu()
 	}
 }
 
+/**************************************************************
+*	  Purpose:  Easy game function
+*
+*         Entry:	User choice to play easy mode.
+*
+*          Exit:	Return to menu.
+****************************************************************/
 void easyGame()
 {
 	int lrow;
@@ -109,6 +138,13 @@ void easyGame()
 	}
 }
 
+/**************************************************************
+*	  Purpose:  intermediate game function
+*
+*         Entry:	User choice to play intermediate mode.
+*
+*          Exit:	Return to menu.
+****************************************************************/
 void intermediateGame()
 {
 	int lrow;
@@ -138,6 +174,13 @@ void intermediateGame()
 	}
 }
 
+/**************************************************************
+*	  Purpose:  expert game function
+*
+*         Entry:	User choice to play expert mode.
+*
+*          Exit:	Return to menu.
+****************************************************************/
 void expertGame()
 {
 	int lrow;
