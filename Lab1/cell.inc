@@ -26,3 +26,13 @@ bool cell::getbombStatus()
 {
 	return m_bomb;
 }
+
+void cell::setbombStatus()
+{
+	m_bomb = true;
+}
+
+void cell::uncover()
+{
+	m_covered = false;
+}

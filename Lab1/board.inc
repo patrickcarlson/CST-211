@@ -1,6 +1,9 @@
 board::board(int inRow, int inCol, char mode)
-	:m_numRows(inRow), m_numCols(inCol), m_boardArray(inRow, inCol)
+	:m_numRows(inRow), m_numCols(inCol)
 {
+	Array2D<cell> newBoardArray(m_numRows, m_numCols);
+	m_boardArray = &newBoardArray;
+
 	if (mode = 'b')
 		m_numBombs = 10;
 	else if (mode = 'i')
@@ -21,15 +24,47 @@ board::board(int inRow, int inCol, char mode)
 			if (bombCount == 0)
 				ranBomb = 0;
 			else
-			ranBomb = rand() % 1 + 0;
+			ranBomb = rand() % 3;
 
 			if (ranBomb == 1)
 			{
 				bombCount--;
-			}
-			cell newCell(ranBomb == 1);
 
-			m_boardArray[row][col] = newCell;
+				cell* newCell;
+
+				newCell = &m_boardArray->Select(row, col);
+
+				newCell->setbombStatus();
+			}
+			
+		}
+	}
+
+	for (int row = 0; row < m_numRows; ++row)
+	{
+		for (int col = 0; col < m_numCols; ++col)
+		{
+			int cellBombs = 0;
+			if (row != m_numRows - 1 && bombinfo(row + 1, col))
+				cellBombs++;
+			if (row != m_numRows - 1 && col != m_numCols - 1 && bombinfo(row + 1, col + 1))
+				cellBombs++;
+			if (col != m_numCols - 1 && bombinfo(row, col + 1))
+				cellBombs++;
+			if (row != 0 && col != m_numCols - 1 && bombinfo(row - 1, col + 1))
+				cellBombs++;
+			if (row != 0 && bombinfo(row - 1, col))
+				cellBombs++;
+			if (row != 0 && col != 0 && bombinfo(row - 1, col - 1))
+				cellBombs++;
+			if (col != 0 && bombinfo(row, col - 1))
+				cellBombs++;
+			if (row != m_numRows - 1 && col != 0 && bombinfo(row + 1, col - 1))
+				cellBombs++;
+
+			cell* curCell = &m_boardArray->Select(row, col);
+
+			curCell->setbombCount(bombCount);
 		}
 	}
 
@@ -37,7 +72,39 @@ board::board(int inRow, int inCol, char mode)
 
 bool board::bombinfo(int row, int col)
 {
-	cell checkCell = m_boardArray.Select(row, col);
+	cell* checkCell = &m_boardArray->Select(row, col);
 
-	return checkCell.getbombStatus;
+	return checkCell->getbombStatus();
+}
+
+void board::uncover(int row, int col)
+{
+	cell* uncoverCell = &m_boardArray->Select(row, col);
+
+	uncoverCell->uncover();
+}
+
+void board::clearEmpties(int row, int col)
+{
+	this->uncover(row, col);
+
+	if (row + 1 < m_numRows && !bombinfo(row + 1, col))
+	{
+		clearEmpties(row + 1, col);
+	}
+
+	if (col + 1 < m_numCols && !bombinfo(row, col + 1))
+	{
+		clearEmpties(row, col + 1);
+	}
+
+	if (row - 1 >= 0 && !bombinfo(row - 1, m_numCols))
+	{
+		clearEmpties(row - 1, m_numCols);
+	}
+
+	if (col - 1 >= 0 && !bombinfo(row, col - 1))
+	{
+		clearEmpties(row, col - 1);
+	}
 }

@@ -9,6 +9,8 @@ public:
 	void setbombCount(int numBombs);
 	int getbombCount();
 	bool getbombStatus();
+	void setbombStatus();
+	void uncover();
 
 private:
 	bool m_covered;

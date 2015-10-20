@@ -4,6 +4,7 @@
 #include "minesweeper.h"
 
 using namespace std;
+
 enum choice
 {
 	b, i, e, q
@@ -79,15 +80,16 @@ void menu()
 
 void easyGame()
 {
-	int row, col;
-	minesweeper easyGame(10, 10, b);
-	while (!easyGame.lose() && !easyGame.win())
-	{
-		cout << "select your next location(row col)" << endl;
+	int lrow = 6;
+	int lcol = 6;
+	minesweeper easygame(10, 10, 'b');
+	//while (!easyGame.lose() && !easyGame.win())
+	//{
+//		cout << "select your next location" << endl;
 		//needs error checking
 		//infinite loops are fun
-		cin >> row >> col;
+//		cin >> lrow >> lcol;
 
-		easyGame.select(row, col);
-	}
+		easygame.select(6, 6);
+	//}
 }

@@ -3,15 +3,26 @@ minesweeper::minesweeper(int inRow, int inCol, char mode)
 {
 	winGame = false;
 	loseGame = false;
-	board gameBoard(inRow, inCol, mode);
+	board newBoard(m_row, m_col, m_mode);
+	gameBoard = &newBoard;
 }
 
 void minesweeper::select(int row, int col)
 {
-	if (gameBoard->bombinfo)
+	if (gameBoard->bombinfo(row, col))
+	{
 		loseGame = true;
 
+		return;
+	}
+
 	else
+
+		gameBoard->clearEmpties(row, col);
+
+		//gameBoard->uncover(row, col);
+
+
 }
 
 bool minesweeper::win()
