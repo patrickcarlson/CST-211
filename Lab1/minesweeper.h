@@ -12,7 +12,7 @@ public:
 	bool lose();
 
 private:
-	board gameBoard;
+	board* gameBoard;
 	char m_mode;
 	int m_row;
 	int m_col;

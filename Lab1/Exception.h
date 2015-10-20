@@ -53,38 +53,33 @@ class Exception
 {
 public:
 	// Default Constructor
-	Exception() { m_msg = "Standard Error"; }
+	Exception();
 
 	// Single argument constructor
-	Exception(char *msg) : m_msg(msg) {}
+	Exception(char *msg);
 
 	// Copy constructor
-	Exception(const Exception &copy) { m_msg = copy.m_msg; }
+	Exception(const Exception &copy);
 
 	// Destructor
-	~Exception(){}
+	~Exception();
 
 	// Assignment operator overload
-	Exception& operator =(const Exception &rhs) {
-		m_msg = rhs.m_msg;
-		return *this;
-	}
+	Exception& operator =(const Exception &rhs);
 
 	// m_msg member variable inspector
-	const char* getMessage() { return m_msg; }
+	const char* getMessage();
 
 	// m_msg member variable mutator
-	void setMessage(char *msg){ m_msg = msg; }
+	void setMessage(char *msg);
 
 	// ostream operator overload.
-	friend std::ostream& operator<<(std::ostream &stream, const Exception &except)
-	{
-		stream << except.m_msg;
-		return stream;
-	}
+	friend std::ostream& operator<<(std::ostream &stream, const Exception &except);
 
 private:
 	char* m_msg; //Stored message for thrown exception.
+
+
 };
 
 #include "Exception.inc"
