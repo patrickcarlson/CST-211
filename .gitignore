@@ -32,6 +32,8 @@ Assignment1/Debug/Assignment1.tlog/cl.command.1.tlog
 Assignment1/Debug/vc120.idb
 Assignment1/Debug/vc120.pdb
 >>>>>>> master
+<<<<<<< HEAD
+=======
 Assignment3/Assignment3.vcxproj.filters
 Assignment3/Assignment3.vcxproj.filters
 *.filters
@@ -39,4 +41,6 @@ Assignment3/Assignment3.vcxproj.filters
 Assignment3/Assignment3.vcxproj.filters
 Assignment3/UpgradeLog2.htm
 Assignment1/UpgradeLog.htm
+>>>>>>> master
 *.htm
+Lab1/Debug/driver.obj.enc
