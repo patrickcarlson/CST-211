@@ -60,11 +60,13 @@ void menu()
 			case i:
 			{
 				cout << "Let's play intermediate" << endl;
+				intermediateGame();
 				break;
 			}
 			case e:
 			{
 				cout << "Let's play expert" << endl;
+				expertGame();
 				break;
 			}
 			case q:
@@ -80,19 +82,87 @@ void menu()
 
 void easyGame()
 {
-	int lrow = 0;
-	int lcol = 0;
+	int lrow;
+	int lcol;
 	minesweeper easygame(10, 10, 'b');
+	char yesorno;
+	bool mark;
 
 	while (!easygame.lose() && !easygame.win())
 	{
+		cout << "Would you like to mark a potential bomb?(y or n)" << endl;
+
+		cin >> yesorno;
+
+		if (yesorno == 'y')
+			mark = true;
+		else
+			mark = false;
 		cout << "select your next location" << endl;
 		//needs error checking
 		//infinite loops are fun
 		cin >> lrow >> lcol;
 
-		easygame.select(lrow, lcol);
+		easygame.select(lrow, lcol, mark);
 
 		
+	}
+}
+
+void intermediateGame()
+{
+	int lrow;
+	int lcol;
+	minesweeper intermediategame(16, 16, 'i');
+	char yesorno;
+	bool mark;
+
+	while (!intermediategame.lose() && !intermediategame.win())
+	{
+		cout << "Would you like to mark a potential bomb?(y or n)" << endl;
+
+		cin >> yesorno;
+
+		if (yesorno == 'y')
+			mark = true;
+		else
+			mark = false;
+		cout << "select your next location" << endl;
+		//needs error checking
+		//infinite loops are fun
+		cin >> lrow >> lcol;
+
+		intermediategame.select(lrow, lcol, mark);
+
+
+	}
+}
+
+void expertGame()
+{
+	int lrow;
+	int lcol;
+	minesweeper expertGame(16, 30, 'e');
+	char yesorno;
+	bool mark;
+
+	while (!expertGame.lose() && !expertGame.win())
+	{
+		cout << "Would you like to mark a potential bomb?(y or n)" << endl;
+
+		cin >> yesorno;
+
+		if (yesorno == 'y')
+			mark = true;
+		else
+			mark = false;
+		cout << "select your next location" << endl;
+		//needs error checking
+		//infinite loops are fun
+		cin >> lrow >> lcol;
+
+		expertGame.select(lrow, lcol, mark);
+
+
 	}
 }

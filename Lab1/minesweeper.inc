@@ -6,8 +6,17 @@ minesweeper::minesweeper(int inRow, int inCol, char mode)
 	gameBoard = new board(m_row, m_col, m_mode);
 }
 
-void minesweeper::select(int row, int col)
+void minesweeper::select(int row, int col, bool mark)
 {
+	if (mark)
+	{
+		gameBoard->mark(row, col);
+
+		gameBoard->print();
+
+		return;
+	}
+	
 	if (gameBoard->bombinfo(row, col))
 	{
 		loseGame = true;

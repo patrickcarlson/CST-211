@@ -4,30 +4,40 @@ board::board(int inRow, int inCol, char mode)
 	Array2D<cell>* newBoardArray = new Array2D<cell>(m_numRows, m_numCols);
 	m_boardArray = newBoardArray;
 
-	if (mode = 'b')
+	if (mode == 'b')
+	{
 		m_numBombs = 10;
-	else if (mode = 'i')
+	}
+	else if (mode == 'i')
+	{
 		m_numBombs = 40;
-	else if (mode = 'e')
+	}
+	else if (mode == 'e')
+	{
 		m_numBombs = 100;
+	}
 
 	int bombCount = m_numBombs;
 
-	int ranBomb;
+	int randCol = rand() % m_numCols;
 
 	cell newCell(false);
-
-	for (int row = 0; row < m_numRows; ++row)
+	while (bombCount > 0)
 	{
-		int randCol = rand() % 10;
+		for (int row = 0; row < m_numRows; ++row)
+		{
+			randCol = rand() % m_numCols;
+
+			cell* newCell = &m_boardArray->Select(row, randCol);
+			if (!newCell->getbombStatus())
+			{
+				newCell->setbombStatus();
+
+				bombCount--;
+			}
 
 
-		cell* newCell = &m_boardArray->Select(row, randCol);
-
-		newCell->setbombStatus();
-			
-			
-	
+		}
 	}
 
 	for (int row = 0; row < m_numRows; ++row)
@@ -106,6 +116,13 @@ void board::clearEmpties(int row, int col)
 	}
 }
 
+void board::mark(int row, int col)
+{
+	cell* markCell = &m_boardArray->Select(row, col);
+
+	markCell->setmarked();
+}
+
 void board::print()
 {
 	for (int row = 0; row < m_numRows; ++row)
@@ -114,7 +131,9 @@ void board::print()
 		{
 			cell* curCell = &m_boardArray->Select(row, col);
 
-			if (curCell->getCoverStatus())
+			if (curCell->getMarked())
+				std::cout << 'M' << " ";
+			else if (curCell->getCoverStatus())
 				std::cout << 'E' << " ";
 			else
 				std::cout << curCell->getbombCount() << " ";

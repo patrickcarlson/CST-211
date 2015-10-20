@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Patrick Carlson
 * Date Created:				10/8/2015
-* Last Modification Date:	10/11/2015
+* Last Modification Date:	10/19/2015
 * Assignment Number:		CST 211 Assignment 2
 * Filename:					Array2D.h
 *

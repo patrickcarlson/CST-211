@@ -5,4 +5,8 @@ void menu();
 
 void easyGame();
 
+void intermediateGame();
+
+void expertGame();
+
 #endif
