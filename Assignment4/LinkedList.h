@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:				Patrick Carlson
 * Date Created:			10/13/2015
-* Last Modification Date:	10/18/2015
+* Last Modification Date:	10/24/2015
 * Assignment Number:    CST 211 Assignment 3
 * Filename:				LinkedList.h
 *
@@ -31,7 +31,7 @@
 *				Default constructor assigns member variables m_head and 
 *				m_tail to nullptr.
 *		LinkedList(const LinkedList<T>& copy)
-*				Copy constructor *Forgot a deep copy....too late*
+*				Copy constructor 
 *		~LinkedList()
 *				Destructor
 *
@@ -100,13 +100,19 @@ public:
 	// Remove node containing associated data
 	Node<T>& Extract(T input);
 
+	// Remove last node in Linked List
+	T popBack();
+
 	// insert node after node containing specified data
 	void insertAfter(T data, T* inNode);
+
+	// insert node before node containing specified data
+	void insertBefore(T data, T* inNode);
 
 	// Iterator of Head node.
 	const Iterator<T> Begin();
 
-	// Iterator of tail node.
+	// Iterator of Node after tail node.
 	const Iterator<T> End();
 
 private:

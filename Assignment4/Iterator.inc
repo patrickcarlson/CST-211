@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:				Patrick Carlson
 * Date Created:			10/13/2015
-* Last Modification Date:	10/18/2015
+* Last Modification Date:	10/24/2015
 * Assignment Number:    CST 211 Assignment 3
 * Filename:				Iterator.inc
 *
@@ -110,9 +110,9 @@ Iterator<T>& Iterator<T>::operator--(int input)
 template <typename T>
 T& Iterator<T>::operator*()
 {
-	T something = m_node->getData();
+	T* something = &m_node->getData();
 	
-	return something;
+	return *something;
 }
 
 /****************************************************************

@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:				Patrick Carlson
 * Date Created:			10/13/2015
-* Last Modification Date:	10/18/2015
+* Last Modification Date:	10/25/2015
 * Assignment Number:    CST 211 Assignment 3
 * Filename:				LinkedList.inc
 *
@@ -52,6 +52,26 @@ LinkedList<T>::LinkedList(const LinkedList<T>& copy)
 		m_tail = nullptr;
 	}
 
+	else
+	{
+		m_head = nullptr;
+		m_tail = nullptr;
+
+		Node<T>* curNode = copy.m_head;
+
+		Node<T>* nextNode;
+
+		while (curNode != nullptr)
+		{
+
+			this->Append(&curNode->getData());
+
+			nextNode = curNode->getNext();
+
+			curNode = nextNode;
+
+		}
+	}
 }
 
 /**************************************************************
@@ -118,6 +138,8 @@ LinkedList<T>& LinkedList<T>::operator = (const LinkedList& rhs)
 
 	}
 
+	return *this;
+
 }
 
 /**************************************************************
@@ -146,7 +168,7 @@ bool LinkedList<T>::isEmpty()
 template <typename T>
 const Node<T>& LinkedList<T>::First()
 {
-	return m_head;
+	return *m_head;
 }
 
 /**************************************************************
@@ -159,7 +181,7 @@ const Node<T>& LinkedList<T>::First()
 template <typename T>
 const Node<T>& LinkedList<T>::Last()
 {
-	return m_tail;
+	return *m_tail;
 }
 
 /**************************************************************
@@ -286,6 +308,30 @@ Node<T>& LinkedList<T>::Extract(T input)
 }
 
 /**************************************************************
+*	  Purpose:  Delete last node in LinkedList and return 
+*				data contained within.
+*
+*         Entry:	
+*
+*          Exit: Deletes last node, returns data contained within
+****************************************************************/
+template <typename T>
+T LinkedList<T>::popBack()
+{
+	T data = m_tail->getData();
+
+	Node<T>* oldend = m_tail;
+	
+	m_tail = m_tail->getPrev();
+
+	m_tail->setNext(nullptr);
+
+	delete oldend;
+
+	return data;
+}
+
+/**************************************************************
 *	  Purpose:  insert node after node containing indicated 
 *				value
 *
@@ -296,15 +342,52 @@ Node<T>& LinkedList<T>::Extract(T input)
 template <typename T>
 void LinkedList<T>::insertAfter(T data, T* inNode)
 {
-	for (Iterator i = this->Begin(); i != this->End(); ++i)
+	for (Iterator<T> i = this->Begin(); i != this->End(); ++i)
 	{
 		if (*i == data)
 		{
-			Node<T>* newNode = new Node<T>(inNode);
+
+			Node<T>* curNode = &i.getItNode();
+
+			Node<T>* newNode = new Node<T>(*inNode);
 			newNode->setPrev(curNode);
+			newNode->setNext(curNode->getNext());
 			curNode->setNext(newNode);
 
-			m_tail = newNode;
+			if (!newNode->getNext())
+				m_tail = newNode;
+			
+		}
+	}
+}
+
+/**************************************************************
+*	  Purpose:   Insert node before node containing indicated 
+*				value
+*
+*         Entry:	Data to be matched to node, data to be 
+*					inserted.
+*
+*          Exit:	
+****************************************************************/
+template <typename T>
+void LinkedList<T>::insertBefore(T data, T* inNode)
+{
+	for (Iterator<T> i = this->Begin(); i != this->End(); ++i)
+	{
+		if (*i == data)
+		{
+
+			Node<T>* curNode = &i.getItNode();
+
+			Node<T>* newNode = new Node<T>(*inNode);
+			newNode->setNext(curNode);
+			newNode->setPrev(curNode->getPrev());
+			curNode->setPrev(newNode);
+
+			if (!newNode->getPrev())
+				m_head = newNode;
+
 		}
 	}
 }
