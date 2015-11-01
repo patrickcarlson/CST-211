@@ -57,8 +57,11 @@ public:
 	// single argument constructor
 	Node(T& data);
 
-	// Inspector returns data stored in node
+	// Inspector returns data stored in node.
 	T& getData();
+
+	//// Inspector returns data stored in node, const
+	//T& getData();
 
 	// Mutate data stored in Node.
 	void setData(const T newData);

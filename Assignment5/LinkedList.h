@@ -46,6 +46,10 @@
 *		Node<T>& Extract(T input)
 *				Removes first item on list holding data of same value
 *				as input.
+*		T popFront()
+*				Removes first item in linked list, returns its data
+*		T popBack()
+*				Removes last item in linked list, returns its data
 *		void insertAfter(T data, T* inNode)
 *				Inserts node after node holding entered data value.
 *		
@@ -82,11 +86,17 @@ public:
 	// bool representing presence of data in linked list
 	bool isEmpty();
 
-	// Inspector returns Head node.
-	const Node<T>& First();
+	// Inspector returns Head node. nonconst.
+	Node<T>& First();
 
-	// Inspector returns Tail node.
-	const Node<T>& Last();
+	// Inspector returns Head node, const.
+	const Node<T>& First() const;
+
+	// Inspector return Tail node. nonconst.
+	Node<T>& Last();
+
+	// Inspector returns Tail node. const.
+	const Node<T>& Last() const;
 
 	// Prepend node to list
 	void Prepend(T* input);
@@ -99,6 +109,9 @@ public:
 	
 	// Remove node containing associated data
 	Node<T>& Extract(T input);
+
+	// Remove first node in Linked list, return that value,.
+	T popFront();
 
 	// Remove last node in Linked List
 	T popBack();

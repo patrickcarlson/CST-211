@@ -66,6 +66,22 @@ void enqueueTests()
 		/*
 		DeqVal = newQueue.Dequeue();
 		*/
+
+		NormalQueue<int> newNormal(5);
+		int enqval1 = 4;
+		int enqval2 = 2;
+		int enqval3 = 6;
+		int enqval4 = 999;
+
+		newNormal.Enqueue(&enqval1);
+		newNormal.Enqueue(&enqval2);
+		newNormal.Enqueue(&enqval3);
+		newNormal.Enqueue(&enqval4);
+
+		newNormal.Dequeue();
+		newNormal.Dequeue();
+
+
 	}
 
 	catch (Exception except)
@@ -86,4 +102,21 @@ void frontTest()
 	int newVal = 10;
 
 	newQueue.Front() = newVal;
+
+	NormalQueue<int> newNormal(5);
+	int enqval1 = 4;
+	int enqval2 = 2;
+	int enqval3 = 6;
+	int enqval4 = 999;
+
+	newNormal.Enqueue(&enqval1);
+	newNormal.Enqueue(&enqval2);
+	newNormal.Enqueue(&enqval3);
+	newNormal.Enqueue(&enqval4);
+
+	int* newFront = &newVal;
+
+	newNormal.Front() = *newFront;
+
+
 }

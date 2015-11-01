@@ -166,7 +166,20 @@ bool LinkedList<T>::isEmpty()
 *          Exit:	Return member variable m_head
 ****************************************************************/
 template <typename T>
-const Node<T>& LinkedList<T>::First()
+Node<T>& LinkedList<T>::First()
+{
+	return *m_head;
+}
+
+/**************************************************************
+*	  Purpose:  Inspector for member variable m_head.
+*
+*         Entry:
+*
+*          Exit:	Return member variable m_head as const
+****************************************************************/
+template <typename T>
+const Node<T>& LinkedList<T>::First() const
 {
 	return *m_head;
 }
@@ -179,7 +192,20 @@ const Node<T>& LinkedList<T>::First()
 *          Exit:	Return member variable m_tail.
 ****************************************************************/
 template <typename T>
-const Node<T>& LinkedList<T>::Last()
+Node<T>& LinkedList<T>::Last()
+{
+	return *m_tail;
+}
+
+/**************************************************************
+*	  Purpose:  Inspector for member variable m_tail.
+*
+*         Entry:
+*
+*          Exit:	Return member variable m_tail as const.
+****************************************************************/
+template <typename T>
+const Node<T>& LinkedList<T>::Last() const
 {
 	return *m_tail;
 }
@@ -305,6 +331,30 @@ Node<T>& LinkedList<T>::Extract(T input)
 			return *curNode;
 		}
 	}
+}
+
+/**************************************************************
+*	  Purpose:  Delete first node in LinkedList and return
+*				data contained within.
+*
+*         Entry:
+*
+*          Exit: Deletes first node, returns data contained within
+****************************************************************/
+template <typename T>
+T LinkedList<T>::popFront()
+{
+	T data = m_head->getData();
+
+	Node<T>* oldHead = m_head;
+
+	m_head = m_head->getNext();
+
+	m_head->setPrev(nullptr);
+
+	delete oldHead;
+
+	return data;
 }
 
 /**************************************************************

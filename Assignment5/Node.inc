@@ -38,7 +38,7 @@ Node<T>::Node(T& data)
 /**************************************************************
 *	  Purpose:  Member variable inspector for m_data
 *
-*         Entry:  
+*         Entry:
 *
 *          Exit:	Returns reference to data stored in member
 *					variable m_data.
@@ -48,6 +48,23 @@ T& Node<T>::getData()
 {
 	return m_data;
 }
+
+
+///**************************************************************
+//*	  Purpose:  Member variable inspector for m_data
+//*
+//*         Entry:  
+//*
+//*          Exit:	Returns reference to data stored in member
+//*					variable m_data.
+//****************************************************************/
+//template <typename T>
+//const T& Node<T>::getData() const
+//{
+//	return m_data;
+//}
+
+
 
 /**************************************************************
 *	  Purpose:  Member variable mutator for m_data

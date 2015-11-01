@@ -97,7 +97,7 @@ bool CircularQueue<T>::isEmpty()
 template <typename T>
 bool CircularQueue<T>::isFull()
 {
-	if (m_first - 1 == m_last || (m_first == 0 && m_last == m_size - 1))
+	if (m_first - 1 == m_last || (m_first == 0 && m_last == m_capacity - 1))
 		return true;
 	else
 		return false;

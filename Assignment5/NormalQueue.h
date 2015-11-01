@@ -10,7 +10,7 @@ class NormalQueue
 public:
 	NormalQueue(int size);
 
-	void Enqueue(T input);
+	void Enqueue(T* input);
 
 	T Dequeue();
 

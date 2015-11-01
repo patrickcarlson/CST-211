@@ -7,25 +7,35 @@ NormalQueue<T>::NormalQueue(int size)
 }
 
 template <typename T>
-void NormalQueue<T>::Enqueue(T input)
+void NormalQueue<T>::Enqueue(T* input)
 {
 	if (!isFull())
 	{
 		m_queue.Append(input);
 		m_size++;
 	}
+	else
+		throw Exception("Overflow: Queue is full, no more room");
 }
 
 template <typename T>
 T NormalQueue<T>::Dequeue()
 {
-	// Build pop_front member function for linkedlist.
+	if (!isEmpty())
+	{
+		m_size--;
+
+		return m_queue.popFront();
+	}
+	else
+		throw Exception("Underflow: Queue is empty, nothing to remove");
+
 }
 
 template <typename T>
 T& NormalQueue<T>::Front()
 {
-
+	return m_queue.First().getData();
 }
 
 template <typename T>
