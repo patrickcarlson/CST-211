@@ -57,10 +57,14 @@
 * Methods:
 *		bool isEmpty()
 *				returns bool if no nodes are present in list.
-*		const Node<T>& First()
+*		Node<T>& First()
 *				returns member variable m_head
-*		const Node<T>& Last()
-*				returns member variable m_tail
+*		const Node<T>& First() const
+*				returns member variable m_head as const
+*		Node<T>& Last()
+*				returns member variable m_tail.
+*		const Node<T>& Last() const
+*				returns member variable m_tail as const
 *		const Iterator<T> Begin()
 *				returns iterator to m_head node
 *		const Iterator<T> End()

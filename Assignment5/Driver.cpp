@@ -40,7 +40,7 @@ void enqueueTests()
 		newQueue.Enqueue(6);
 		newQueue.Enqueue(2);
 
-		/*
+		
 		// Test overflow
 		newQueue.Enqueue(6);
 		newQueue.Enqueue(2);
@@ -52,7 +52,7 @@ void enqueueTests()
 		newQueue.Enqueue(2);
 		newQueue.Enqueue(6);
 
-		*/
+		
 
 
 
@@ -61,11 +61,10 @@ void enqueueTests()
 		DeqVal = newQueue.Dequeue();
 
 		DeqVal = newQueue.Dequeue();
-
-		// Test Underflow
-		/*
+		
+		//Test Underflow
 		DeqVal = newQueue.Dequeue();
-		*/
+		
 
 		NormalQueue<int> newNormal(5);
 		int enqval1 = 4;
@@ -84,7 +83,7 @@ void enqueueTests()
 
 	}
 
-	catch (Exception except)
+	catch (Exception& except)
 	{
 		cout << except;
 	}
@@ -114,9 +113,7 @@ void frontTest()
 	newNormal.Enqueue(&enqval3);
 	newNormal.Enqueue(&enqval4);
 
-	int* newFront = &newVal;
-
-	newNormal.Front() = *newFront;
+	newNormal.Front() = newVal;
 
 
 }

@@ -59,9 +59,13 @@ Exception::Exception(char *msg)
 ****************************************************************/
 Exception::Exception(const Exception &copy) 
 { 
-	size_t len = strlen(copy.m_msg) + 1;
-	m_msg = new char[len]; 
-	strcpy_s(m_msg, len, copy.m_msg);
+	m_msg = new char[strlen(copy.m_msg)];
+	
+	for (size_t i = 0; i < strlen(copy.m_msg); ++i)
+	{
+		m_msg[i] = copy.m_msg[i];
+	}
+
 }
 
 /**************************************************************

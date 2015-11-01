@@ -34,7 +34,7 @@ void CircularQueue<T>::Enqueue(T input)
 		m_size++;
 	}
 	else
-		throw Exception("Overflow: queue is full");
+		throw Exception("Overflow: No more room in queue.");
 }
 
 template <typename T>
