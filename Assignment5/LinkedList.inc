@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:				Patrick Carlson
 * Date Created:			10/13/2015
-* Last Modification Date:	10/25/2015
+* Last Modification Date:	11/1/2015
 * Assignment Number:    CST 211 Assignment 3
 * Filename:				LinkedList.inc
 *

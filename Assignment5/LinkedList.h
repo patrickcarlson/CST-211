@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:				Patrick Carlson
 * Date Created:			10/13/2015
-* Last Modification Date:	10/24/2015
+* Last Modification Date:	11/1/2015
 * Assignment Number:    CST 211 Assignment 3
 * Filename:				LinkedList.h
 *
@@ -117,7 +117,7 @@ public:
 	// Remove first node in Linked list, return that value,.
 	T popFront();
 
-	// Remove last node in Linked List
+	// Remove last node in Linked List, return that value
 	T popBack();
 
 	// insert node after node containing specified data
