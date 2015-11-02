@@ -11,6 +11,15 @@ void myInsertionSort(T theArray[], int n);
 template <typename T>
 void mySelectionSort(T theArray[], int n);
 
+template <typename T>
+void myMergeSort(T theArray[], int first, int last);
+
+template <typename T>
+void merge(T theArray[], int first, int last, int middle);
+
+template <typename T>
+void myQuickSort(T theArray[], int n);
+
 
 
 int main()
@@ -30,13 +39,16 @@ int main()
 
 	mySelectionSort(toSortArray, 5);
 
+	memcpy(toSortArray, thisArray, 5 * sizeof(int));
+
+	myMergeSort(toSortArray, 0, 4);
+
 }
 
 
 template <typename T> 
 void myBubbleSort(T theArray[], int n)
 {
-	cout << "this is a test" << endl;
 
 	for (int i = 0; i < n - 1; i++)
 		for (int j = n - 1; j > i; --j)
@@ -80,4 +92,76 @@ void mySelectionSort(T theArray[], int n)
 		if(temp != i)
 		swap(theArray[i], theArray[temp]);
 	}
+}
+
+template <typename T>
+void myMergeSort(T theArray[], int first, int last)
+{
+	int middle;
+	if (first < last)
+	{
+		middle = (first + last) / 2;
+
+		myMergeSort(theArray, first, middle);
+		myMergeSort(theArray, middle + 1, last);
+		
+		merge(theArray, first, last, middle);
+
+	}
+}
+
+template <typename T>
+void merge(T theArray[], int first, int last, int middle)
+{
+	int i = first;
+	int j = middle + 1;
+	int k = first;
+	T* tempArray = new T[last + 1];
+
+	while (i <= middle && j <= last)
+	{
+		if (theArray[i] < theArray[j])
+		{
+			tempArray[k] = theArray[i];
+
+			k++;
+			i++;
+		}
+
+		else
+		{
+			tempArray[k] = theArray[j];
+			k++;
+			j++;
+		}
+	}
+
+	while (i <= middle)
+	{
+		tempArray[k] = theArray[i];
+		k++;
+		i++;
+	}
+
+	while (j <= last)
+	{
+		tempArray[k] = theArray[j];
+		
+		k++;
+		j++;
+
+	}
+
+	for (i = first; i < k; i++)
+	{
+		theArray[i] = tempArray[i];
+	}
+
+	delete[] tempArray;
+}
+
+template <typename T>
+void myQuickSort(T theArray[], int n)
+{
+
 }
