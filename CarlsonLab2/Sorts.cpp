@@ -20,6 +20,18 @@ void merge(T theArray[], int first, int last, int middle);
 template <typename T>
 void myQuickSort(T theArray[], int n);
 
+template <typename T>
+void myQuickSort(T theArray[], int first, int last);
+
+template <typename T>
+void myHeapSort(T theArray[], int n);
+
+template <typename T>
+void heap(T theArray[], int first, int last);
+
+template <typename T>
+void myShellsort(T theArray[], int n);
+
 
 
 int main()
@@ -42,6 +54,15 @@ int main()
 	memcpy(toSortArray, thisArray, 5 * sizeof(int));
 
 	myMergeSort(toSortArray, 0, 4);
+
+	memcpy(toSortArray, thisArray, 5 * sizeof(int));
+
+	myQuickSort(toSortArray, 5);
+
+	memcpy(toSortArray, thisArray, 5 * sizeof(int));
+
+	myHeapSort(toSortArray, 5);
+
 
 }
 
@@ -163,5 +184,136 @@ void merge(T theArray[], int first, int last, int middle)
 template <typename T>
 void myQuickSort(T theArray[], int n)
 {
+	int i;
+	int top;
 
+	if (n < 2)
+		return;
+	for (i = 1, top = 0; i < n; i++)
+	{
+		if (theArray[top] < theArray[i])
+			top = i;
+	}
+
+	swap(theArray[n - 1], theArray[top]);
+	myQuickSort(theArray, 0, n - 2);
+}
+
+template <typename T>
+void myQuickSort(T theArray[], int first, int last)
+{
+	int low;
+	int high;
+
+	low = first + 1;
+
+	high = last;
+
+	//
+	//Set pivot to value in middle index.
+	//
+	swap(theArray[first], theArray[(first + last) / 2]);
+
+	T pivot = theArray[first];
+
+	while (low <= high)
+	{
+		//
+		// Move low flag up until reaches a value greater than pivot.
+		//
+		while (theArray[low] < pivot)
+		{
+			low++;
+		}
+
+		//
+		// Move high flag down until reaches a value less than pivot
+		//
+		while (pivot < theArray[high])
+		{
+			high--;
+		}
+
+		//
+		// Check that flags have not crossed then perform swap.
+		//
+
+		if (low < high)
+		{
+			swap(theArray[low], theArray[high]);
+			low++;
+			high++;
+		}
+
+		//
+		// Increment low flag if low has reached high flag.
+		//
+		else
+			low++;
+	}
+
+	//
+	// Pass our pivot back to the array where it will lay between values lower and values higher
+	//
+	swap(theArray[high], theArray[first]);
+
+	//
+	//Divide array into to seperate arrays to be quicksorted.
+	//
+	if (first < high - 1)
+		myQuickSort(theArray, first, high - 1);
+	if (high + 1 < last)
+		myQuickSort(theArray, high + 1, last);
+
+}
+
+template <typename T>
+void myHeapSort(T theArray[], int n)
+{
+	for (int i = n / 2 - 1; i >= 0; --i)
+	{
+		heap(theArray, i, n - 1);
+	}
+
+	for (int i = n - 1; i >= 1; --i)
+	{
+		swap(theArray[0], theArray[i]);
+		heap(theArray, 0, i - 1);
+	}
+}
+
+template <typename T>
+void heap(T theArray[], int first, int last)
+{
+	int high;
+
+	high = 2 * first + 1;
+
+	while (high <= last)
+	{
+		if (high < last && theArray[high] < theArray[high + 1])
+			high++;
+
+		if (theArray[first] < theArray[high])
+		{
+			swap(theArray[first], theArray[high]);
+			first = high;
+			high = 2 * first + 1;
+		}
+		else high = last + 1;
+	
+	}
+
+}
+
+template <typename T>
+void myShellsort(T theArray[], int n)
+{
+	while (incSize < n)
+	{
+		incSize = 3 * incSize + 1;
+		incValue++;
+	}
+	
+	int* increment = new int[n*3]
 }
