@@ -1,9 +1,10 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 template <typename T>
-void myBubbleSort(T theArray[], int n);
+void myBubbleSort(T* theArray, int n);
 
 template <typename T>
 void myInsertionSort(T theArray[], int n);
@@ -34,36 +35,61 @@ void myShellsort(T theArray[], int n);
 
 
 
-int main()
+int main(int argc, const char* argv[])
 {
-	int thisArray[5] = { 11, 7, 3, 2, 25 };
-	int toSortArray[5];
+	int n;
 
-	memcpy(toSortArray, thisArray, 5*sizeof(int));
+	int* thisArray;
+	int* toSortArray;
 
-	myBubbleSort(toSortArray, 5);
+	if (argc > 1) {
+		n = atoi(argv[1]);
+	}
+	
+	thisArray = new int[n];
+	vector<int> thisVector;
+	for (int i = 0; i < n; i++)
+	{
+		int value = rand() % 1000 + 1;
+		thisArray[i] = value;
 
-	memcpy(toSortArray, thisArray, 5 * sizeof(int));
+		thisVector.push_back(value);
+	}
 
-	myInsertionSort(toSortArray, 5);
+	toSortArray = new int[n];
 
-	memcpy(toSortArray, thisArray, 5 * sizeof(int));
+	memcpy(toSortArray, thisArray, n*sizeof(int));
 
-	mySelectionSort(toSortArray, 5);
+	myBubbleSort(toSortArray, n);
 
-	memcpy(toSortArray, thisArray, 5 * sizeof(int));
+	myBubbleSort(&thisVector[0], n);
 
-	myMergeSort(toSortArray, 0, 4);
+	memcpy(toSortArray, thisArray, n * sizeof(int));
 
-	memcpy(toSortArray, thisArray, 5 * sizeof(int));
+	myInsertionSort(toSortArray, n);
 
-	myQuickSort(toSortArray, 5);
+	memcpy(toSortArray, thisArray, n * sizeof(int));
 
-	memcpy(toSortArray, thisArray, 5 * sizeof(int));
+	mySelectionSort(toSortArray, n);
 
-	myHeapSort(toSortArray, 5);
+	memcpy(toSortArray, thisArray, n * sizeof(int));
 
+	myMergeSort(toSortArray, 0, n-1);
 
+	memcpy(toSortArray, thisArray, n * sizeof(int));
+
+	myQuickSort(toSortArray, n);
+
+	memcpy(toSortArray, thisArray, n * sizeof(int));
+
+	myHeapSort(toSortArray, n);
+
+	memcpy(toSortArray, thisArray, n * sizeof(int));
+
+	myShellsort(toSortArray, n);
+
+	delete[] thisArray;
+	delete[] toSortArray;
 }
 
 
@@ -74,7 +100,12 @@ void myBubbleSort(T theArray[], int n)
 	for (int i = 0; i < n - 1; i++)
 		for (int j = n - 1; j > i; --j)
 			if (theArray[j] < theArray[j - 1])
-				swap(theArray[j], theArray[j - 1]);
+			{
+				T temp = theArray[j];
+				theArray[j] = theArray[j - 1];
+				theArray[j - 1] = temp;
+			}
+
 
 }
 
@@ -110,8 +141,13 @@ void mySelectionSort(T theArray[], int n)
 				temp = j;
 			}
 		}
-		if(temp != i)
-		swap(theArray[i], theArray[temp]);
+		if (temp != i) 
+		{
+			T tempVal = theArray[i];
+			theArray[i] = theArray[temp];
+			theArray[temp] = tempVal;
+		}
+		
 	}
 }
 
@@ -195,7 +231,10 @@ void myQuickSort(T theArray[], int n)
 			top = i;
 	}
 
-	swap(theArray[n - 1], theArray[top]);
+	T tempVal = theArray[n - 1];
+	theArray[n - 1] = theArray[top];
+	theArray[top] = tempVal;
+
 	myQuickSort(theArray, 0, n - 2);
 }
 
@@ -212,7 +251,9 @@ void myQuickSort(T theArray[], int first, int last)
 	//
 	//Set pivot to value in middle index.
 	//
-	swap(theArray[first], theArray[(first + last) / 2]);
+	T tempVal = theArray[first];
+	theArray[first] = theArray[(first + last) / 2 ];
+	theArray[(first + last) / 2] = tempVal;
 
 	T pivot = theArray[first];
 
@@ -240,7 +281,9 @@ void myQuickSort(T theArray[], int first, int last)
 
 		if (low < high)
 		{
-			swap(theArray[low], theArray[high]);
+			tempVal = theArray[low];
+			theArray[low] = theArray[high];
+			theArray[high] = tempVal;
 			low++;
 			high++;
 		}
@@ -255,7 +298,10 @@ void myQuickSort(T theArray[], int first, int last)
 	//
 	// Pass our pivot back to the array where it will lay between values lower and values higher
 	//
-	swap(theArray[high], theArray[first]);
+
+	tempVal = theArray[high];
+	theArray[high] = theArray[first];
+	theArray[first] = tempVal;
 
 	//
 	//Divide array into to seperate arrays to be quicksorted.
@@ -277,7 +323,10 @@ void myHeapSort(T theArray[], int n)
 
 	for (int i = n - 1; i >= 1; --i)
 	{
-		swap(theArray[0], theArray[i]);
+		T tempVal = theArray[0];
+		theArray[0] = theArray[i];
+		theArray[i] = tempVal;
+
 		heap(theArray, 0, i - 1);
 	}
 }
@@ -296,7 +345,10 @@ void heap(T theArray[], int first, int last)
 
 		if (theArray[first] < theArray[high])
 		{
-			swap(theArray[first], theArray[high]);
+			T tempVal = theArray[first];
+			theArray[first] = theArray[high];
+			theArray[high] = tempVal;
+
 			first = high;
 			high = 2 * first + 1;
 		}
@@ -309,11 +361,56 @@ void heap(T theArray[], int first, int last)
 template <typename T>
 void myShellsort(T theArray[], int n)
 {
-	while (incSize < n)
+	int incSize;
+	int incLocation;
+	int sortIndex;
+	int tempIndex;
+
+
+	//
+	// Vector to contain increment array. Each cell should contain
+	// 3 * (previous cell) + 1
+	//
+	vector<int> increment;
+
+	for (int i = 0, incSize = 1; incSize < n; i++)
 	{
-		incSize = 3 * incSize + 1;
-		incValue++;
+		increment.push_back(incSize);
+		incSize = 3 * n + 1;
 	}
-	
-	int* increment = new int[n*3]
+
+	for (int j = (increment.size() - 1); j >= 0; j--)
+	{
+		incSize = increment[j];
+
+		
+
+		for (incLocation = incSize; incLocation < 2 * incSize; incLocation++)
+		{
+
+			//
+			// Sort values in cells seperated by incSize with insertion sort
+			//
+
+			for (sortIndex = incLocation; sortIndex < n;)
+			{
+				T temp = theArray[sortIndex];
+				
+				tempIndex = sortIndex;
+
+				while (tempIndex - incSize >= 0 && temp < theArray[tempIndex - incSize])
+				{
+					theArray[tempIndex] = theArray[tempIndex - incSize];
+
+					tempIndex -= incSize;
+
+
+				}
+
+				theArray[tempIndex] = temp;
+
+				sortIndex += incSize;
+			}
+		}
+	}
 }
