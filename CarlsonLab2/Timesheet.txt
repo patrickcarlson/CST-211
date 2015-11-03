@@ -1,0 +1,17 @@
+Bubble sort takes 0 milliseconds to execute on C Array.
+Bubble sort takes 0 milliseconds to execute on Vector.
+Bubble sort takes 0 milliseconds to execute on Vector.
+Insertion sort takes 0 milliseconds to execute on C Array.
+Insertion sort takes 0 milliseconds to execute on Vector.
+Insertion sort takes 0 milliseconds to execute on custom Array(Assignment 1)
+Selection sort takes 0 milliseconds to execute on C Array.
+Selection sort takes 0 milliseconds to execute on Vector.
+Selection sort takes 0 milliseconds to execute on custom Array(Assignment 1).
+Merge sort takes 0 milliseconds to execute on C Array.
+Merge sort takes 0 milliseconds to execute on Vector.
+Merge sort takes 0 milliseconds to execute on custom Array(Assignment 1).
+Quick sort takes 0 milliseconds to execute on C Array.
+Quick sort takes 0 milliseconds to execute on Vector.
+Heap sort takes 0 milliseconds to execute on C Array.
+Heap sort takes 0 milliseconds to execute on Vector.
+Heap sort takes 0 milliseconds to execute on custom Array(Assignment 1).
